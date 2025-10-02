@@ -85,7 +85,7 @@ const Dock: React.FC = () => {
             >
               {app.id === 'bapps-store' ? (
                 <div className="dock-app-icon">
-                  <img src="/bapps-store.svg" alt="BAPPS" className="dock-app-image" />
+                  <img src="/bapps-icon.jpg" alt="BAPPS" className="dock-app-image" />
                 </div>
               ) : (
                 <Icon className="dock-app-icon" style={{ color: getIconColor(app.color) }} />
