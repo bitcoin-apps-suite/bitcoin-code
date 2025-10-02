@@ -43,11 +43,11 @@ const TokenPage: React.FC = () => {
       <div className="token-container">
         {/* Hero Section */}
         <section className="token-hero">
-          <h1><span style={{color: '#ffffff'}}>The</span> Bitcoin App <span style={{color: '#ffffff'}}>Token</span></h1>
+          <h1><span style={{color: '#ffffff'}}>The</span> Bitcoin Code <span style={{color: '#ffffff'}}>Token</span></h1>
           <p className="token-tagline">
             Open-source development meets sustainable economics
           </p>
-          <div className="token-badge">$BAPP</div>
+          <div className="token-badge">$BCODE</div>
         </section>
 
         {/* Philosophy Section */}
@@ -55,12 +55,12 @@ const TokenPage: React.FC = () => {
           <h2>Our Open-Source Philosophy</h2>
           <div className="philosophy-content">
             <p>
-              Bitcoin App is an <strong>open-source project</strong> licensed under MIT and BSV licenses. 
+              Bitcoin Code is an <strong>open-source project</strong> licensed under MIT and BSV licenses. 
               Our intention is to foster an open culture where forking, cloning, and adding to the code 
               and features is welcomed and encouraged.
             </p>
             <p>
-              The $BAPP token represents our approach to creating a sustainable economic model that 
+              The $BCODE token represents our approach to creating a sustainable economic model that 
               aims to reward contributors while maintaining transparency and openness.
             </p>
             <div className="philosophy-points">
@@ -82,7 +82,7 @@ const TokenPage: React.FC = () => {
 
         {/* Token Model Section */}
         <section className="token-model-section">
-          <h2>The $BAPP Token Model</h2>
+          <h2>The $BCODE Token Model</h2>
           <div className="model-card">
             <h3>How It Works</h3>
             <ul>
@@ -116,7 +116,7 @@ const TokenPage: React.FC = () => {
               </li>
               <li>
                 <strong>Not a Public Offering:</strong> This is not a solicitation for investment or 
-                capital raising. $BAPP tokens are rewards for contribution, not investment instruments
+                capital raising. $BCODE tokens are rewards for contribution, not investment instruments
               </li>
               <li>
                 <strong>Future Equity:</strong> The Bitcoin Corporation LTD may incorporate and offer 

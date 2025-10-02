@@ -3676,7 +3676,7 @@ main {
   left: 1rem;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: rgba(102, 126, 234, 0.9);
+  background: rgba(59, 130, 246, 0.9);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -3686,7 +3686,7 @@ main {
 }
 
 .back-to-home:hover {
-  background: #667eea;
+  background: #3b82f6;
   transform: translateX(-5px);
 }
 
@@ -3698,7 +3698,7 @@ main {
 
 /* Header */
 .app-header {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   position: sticky;
@@ -3724,12 +3724,12 @@ main {
 .logo-icon {
   width: 32px;
   height: 32px;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .logo-section h1 {
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3749,12 +3749,12 @@ main {
 }
 
 .nav-menu a:hover {
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .start-building-btn {
   padding: 0.5rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -3783,7 +3783,7 @@ main {
   font-size: 3.5rem;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3815,24 +3815,24 @@ main {
 }
 
 .cta-button.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   color: white;
 }
 
 .cta-button.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
 }
 
 .cta-button.secondary {
   background: transparent;
   color: white;
-  border: 2px solid rgba(102, 126, 234, 0.5);
+  border: 2px solid rgba(59, 130, 246, 0.5);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
 }
 
 .cta-button svg {
@@ -3885,7 +3885,7 @@ main {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3898,8 +3898,8 @@ main {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 1rem;
   padding: 2rem;
   transition: all 0.3s;
@@ -3907,14 +3907,14 @@ main {
 
 .feature-card:hover {
   transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  border-color: #3b82f6;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
 }
 
 .feature-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -3965,8 +3965,8 @@ main {
 }
 
 .library-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
   display: flex;
@@ -3977,8 +3977,8 @@ main {
 
 .library-card:hover {
   transform: translateY(-3px);
-  border-color: #667eea;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  border-color: #3b82f6;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 .library-info {
@@ -3995,7 +3995,7 @@ main {
 
 .library-version {
   font-size: 0.85rem;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .library-description {
@@ -4013,7 +4013,7 @@ main {
 }
 
 .add-library-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   color: white;
   border: none;
   padding: 0.75rem 2rem;
@@ -4029,7 +4029,7 @@ main {
 
 .add-library-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
 }
 
 /* Templates Section */
@@ -4047,8 +4047,8 @@ main {
 }
 
 .template-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 1rem;
   padding: 1.5rem;
   transition: all 0.3s;
@@ -4057,8 +4057,8 @@ main {
 
 .template-card:hover {
   transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  border-color: #3b82f6;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
 }
 
 .template-card h4 {
@@ -4080,12 +4080,12 @@ main {
 }
 
 .tag {
-  background: rgba(102, 126, 234, 0.2);
+  background: rgba(59, 130, 246, 0.2);
   color: #a0b4ff;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.8rem;
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 /* Getting Started Section */
@@ -4109,7 +4109,7 @@ main {
 .step-number {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4175,7 +4175,7 @@ main {
 }
 
 .footer-section a:hover {
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .footer-bottom {

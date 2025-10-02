@@ -50,7 +50,7 @@ export default function DevSidebar() {
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-OS/issues?state=open')
+        const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/issues?state=open')
         const data = await response.json()
         setIssueCount(Array.isArray(data) ? data.length : 0)
       } catch (error) {
@@ -71,7 +71,7 @@ export default function DevSidebar() {
     external?: boolean
   }> = [
     // Token & Core at top
-    { path: '/token', icon: Coins, label: '$bOS Token', badge: 'NEW' },
+    { path: '/token', icon: Coins, label: '$BCODE Token', badge: 'NEW' },
     { path: '/contracts', icon: Terminal, label: 'Smart Contracts', badge: 'BETA' },
     { path: '/exchange', icon: Download, label: 'Token Exchange' },
     
@@ -86,9 +86,9 @@ export default function DevSidebar() {
     { divider: true },
     { section: 'DEVELOPMENT' },
     { path: '/api', icon: Package, label: 'API Reference' },
-    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-OS', icon: Github, label: 'GitHub Repository', external: true },
-    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-OS/issues', icon: FileCode, label: 'Issues', badge: issueCount > 0 ? String(issueCount) : '0', external: true },
-    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-OS/pulls', icon: GitPullRequest, label: 'Pull Requests', external: true },
+    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code', icon: Github, label: 'GitHub Repository', external: true },
+    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code/issues', icon: FileCode, label: 'Issues', badge: issueCount > 0 ? String(issueCount) : '0', external: true },
+    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code/pulls', icon: GitPullRequest, label: 'Pull Requests', external: true },
     
     // System Status
     { divider: true },
@@ -182,7 +182,7 @@ export default function DevSidebar() {
       {/* Stats section */}
       {!isCollapsed && (
         <div className="dev-sidebar-stats">
-          <h4>bOS Stats</h4>
+          <h4>$BCODE Stats</h4>
           <div className="dev-stat">
             <span className="dev-stat-label">Total Supply</span>
             <span className="dev-stat-value">{stats.totalSupply}</span>
