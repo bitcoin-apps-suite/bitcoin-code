@@ -225,11 +225,16 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
             padding: '0 20px 0 18px',
             fontSize: '18px',
             fontWeight: 'bold',
-            color: '#ff9500',
+            background: 'linear-gradient(90deg, #ff6b6b, #f97316, #feca57, #48dbfb, #0abde3, #a55eea, #fd79a8)',
+            backgroundSize: '200% 200%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'gradientShift 3s ease-in-out infinite',
             display: 'flex',
             alignItems: 'center',
             height: '32px',
-            background: showBitcoinSuite ? 'rgba(255, 149, 0, 0.1)' : 'transparent',
+            backgroundColor: showBitcoinSuite ? 'rgba(255, 149, 0, 0.1)' : 'transparent',
             border: 'none',
             cursor: 'pointer',
             transition: 'background 0.15s ease'
@@ -318,7 +323,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
             </a>
 
             <a
-              href="https://bitcoin-sheets.vercel.app"
+              href="https://bitcoin-spreadsheet.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -335,7 +340,196 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
               onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
               <span style={{ color: '#3b82f6', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
-              Bitcoin Spreadsheets
+              Bitcoin Spreadsheet
+            </a>
+
+            <a
+              href="https://bitcoin-wallet-sable.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#eab308', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Wallet
+            </a>
+
+            <a
+              href="https://bitcoin-email.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#ef4444', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Email
+            </a>
+
+            <a
+              href="https://bitcoin-music.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#a855f7', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Music
+            </a>
+
+            <a
+              href="https://bitcoin-calendar.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#d946ef', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Calendar
+            </a>
+
+            <a
+              href="https://bitcoin-exchange-iota.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#10b981', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Exchange
+            </a>
+
+            <a
+              href="https://bitcoin-search.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#2563eb', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Search
+            </a>
+
+            <a
+              href="https://bitcoin-jobs.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#22d3ee', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Jobs
+            </a>
+
+            <a
+              href="https://bitcoin-video-nine.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#22c55e', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Video
+            </a>
+
+            <a
+              href="https://bitcoin-paint.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '6px 16px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '13px',
+                transition: 'background 0.15s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ color: '#ef4444', marginRight: '12px', fontSize: '16px', fontWeight: 'bold' }}>₿</span>
+              Bitcoin Paint
             </a>
           </div>
         )}
