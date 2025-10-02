@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import AppBuilder from './components/AppBuilder';
+import CodeEditor from './components/CodeEditor';
 import ProofOfConceptBar from './components/ProofOfConceptBar';
 import CleanTaskbar from './components/CleanTaskbar';
 import Dock from './components/Dock';
@@ -27,7 +27,7 @@ function App() {
               className="start-building-btn"
               onClick={() => setShowBuilder(true)}
             >
-              Start Building
+              Open Code Editor
             </button>
           </nav>
         </div>
@@ -48,7 +48,7 @@ function App() {
                 className="cta-button primary"
                 onClick={() => setShowBuilder(true)}
               >
-                <Rocket /> Launch Code Editor
+                <Code2 /> Launch Code Editor
               </button>
               <button className="cta-button secondary">
                 <Globe /> View Examples
@@ -244,7 +244,7 @@ app.createTransaction({
               >
                 ← Back to Home
               </button>
-              <AppBuilder />
+              <CodeEditor />
             </>
           ) : (
             <Routes>
