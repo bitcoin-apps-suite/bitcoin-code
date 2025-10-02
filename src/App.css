@@ -59,14 +59,14 @@
 }
 
 .bitcoin-logo {
-  color: #ff9500;
+  color: #22c55e;
   font-size: 18px;
   font-weight: bold;
   line-height: 1;
 }
 
 .bitcoin-symbol {
-  color: #ff9500;
+  color: #22c55e;
   font-size: 18px;
   font-weight: bold;
 }
@@ -172,7 +172,7 @@
 }
 
 .bitcoin-logo-small {
-  color: #ff9500;
+  color: #22c55e;
   font-size: 16px;
   font-weight: bold;
 }
@@ -536,7 +536,7 @@ main {
 }
 
 .mobile-menu-section h4 {
-  color: #ff9500;
+  color: #22c55e;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -558,7 +558,7 @@ main {
 }
 
 .mobile-menu-item:hover {
-  color: #ff9500;
+  color: #22c55e;
 }
 
 .mobile-menu-login {
@@ -616,7 +616,7 @@ main {
 
 .mobile-document-item.active {
   background-color: rgba(255, 149, 0, 0.1);
-  border-left: 3px solid #ff9500;
+  border-left: 3px solid #22c55e;
   padding-left: 9px;
 }
 
@@ -1294,7 +1294,7 @@ main {
 }
 
 .storage-option.selected {
-  border-color: #ff9500;
+  border-color: #22c55e;
   background: #2a1f0a;
 }
 
@@ -1406,7 +1406,7 @@ main {
 
 .monetization-options input:focus {
   outline: none;
-  border-color: #ff9500;
+  border-color: #22c55e;
 }
 
 .shares-summary {
@@ -1483,12 +1483,12 @@ main {
 }
 
 .save-btn {
-  background: linear-gradient(135deg, #ff9500 0%, #ff8c00 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #fff;
 }
 
 .save-btn:hover {
-  background: linear-gradient(135deg, #ffb347 0%, #ff9500 100%);
+  background: linear-gradient(135deg, #34d399 0%, #22c55e 100%);
 }
 
 .editor-container {
@@ -1684,7 +1684,7 @@ main {
 }
 
 .publish-btn:hover {
-  background-color: #ff9500;
+  background-color: #22c55e;
   color: white;
   opacity: 1;
 }
@@ -3669,9 +3669,9 @@ main {
 }
 
 .features-close-btn:hover {
-  background: #ff9500;
+  background: #22c55e;
   color: #000;
-  border-color: #ff9500;
+  border-color: #22c55e;
   transform: scale(1.1);
 }
 
@@ -3692,7 +3692,7 @@ main {
 }
 
 .back-to-home:hover {
-  background: #3b82f6;
+  background: #22c55e;
   transform: translateX(-5px);
 }
 
@@ -3730,12 +3730,12 @@ main {
 .logo-icon {
   width: 32px;
   height: 32px;
-  color: #3b82f6;
+  color: #22c55e;
 }
 
 .logo-section h1 {
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3755,12 +3755,12 @@ main {
 }
 
 .nav-menu a:hover {
-  color: #3b82f6;
+  color: #22c55e;
 }
 
 .start-building-btn {
   padding: 0.5rem 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -3789,7 +3789,7 @@ main {
   font-size: 3.5rem;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3821,7 +3821,7 @@ main {
 }
 
 .cta-button.primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: white;
 }
 
@@ -3838,7 +3838,7 @@ main {
 
 .cta-button.secondary:hover {
   background: rgba(59, 130, 246, 0.1);
-  border-color: #3b82f6;
+  border-color: #22c55e;
 }
 
 .cta-button svg {
@@ -3891,7 +3891,7 @@ main {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3913,14 +3913,14 @@ main {
 
 .feature-card:hover {
   transform: translateY(-5px);
-  border-color: #3b82f6;
+  border-color: #22c55e;
   box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
 }
 
 .feature-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -3983,7 +3983,7 @@ main {
 
 .library-card:hover {
   transform: translateY(-3px);
-  border-color: #3b82f6;
+  border-color: #22c55e;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
@@ -4001,7 +4001,7 @@ main {
 
 .library-version {
   font-size: 0.85rem;
-  color: #3b82f6;
+  color: #22c55e;
 }
 
 .library-description {
@@ -4019,7 +4019,7 @@ main {
 }
 
 .add-library-btn {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: white;
   border: none;
   padding: 0.75rem 2rem;
@@ -4063,7 +4063,7 @@ main {
 
 .template-card:hover {
   transform: translateY(-5px);
-  border-color: #3b82f6;
+  border-color: #22c55e;
   box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
 }
 
@@ -4115,7 +4115,7 @@ main {
 .step-number {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4181,7 +4181,7 @@ main {
 }
 
 .footer-section a:hover {
-  color: #3b82f6;
+  color: #22c55e;
 }
 
 .footer-bottom {

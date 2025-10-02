@@ -145,7 +145,7 @@ const TokenPage: React.FC = () => {
                 </div>
                 <div className="stream featured">
                   <h4>Pro Tier</h4>
-                  <p>Hosted service, premium features</p>
+                  <p>Cloud IDE, premium features</p>
                   <p className="price">$29/month</p>
                 </div>
                 <div className="stream">
@@ -155,21 +155,21 @@ const TokenPage: React.FC = () => {
                 </div>
               </div>
               
-              <h3 style={{marginTop: '40px'}}>Exchange Revenue</h3>
+              <h3 style={{marginTop: '40px'}}>Platform Revenue</h3>
               <div className="revenue-streams">
                 <div className="stream">
-                  <h4>Token Sales</h4>
-                  <p>Users tokenize & sell their work</p>
+                  <h4>Code Sales</h4>
+                  <p>Developers monetize & sell their code</p>
                   <p className="price">2.5% fee</p>
                 </div>
                 <div className="stream featured">
-                  <h4>Share Trading</h4>
-                  <p>Secondary market for document shares</p>
+                  <h4>App Marketplace</h4>
+                  <p>Secondary market for code and apps</p>
                   <p className="price">1.5% fee</p>
                 </div>
                 <div className="stream">
-                  <h4>NFT Marketplace</h4>
-                  <p>Premium content & collections</p>
+                  <h4>Premium Tools</h4>
+                  <p>Advanced development tools & AI</p>
                   <p className="price">3% fee</p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ const TokenPage: React.FC = () => {
               <h3>Value Flow</h3>
               <div className="flow-diagram">
                 <div className="flow-item">
-                  <span>Subscriptions + Exchange fees</span>
+                  <span>Subscriptions + Platform fees</span>
                   <span className="arrow">→</span>
                 </div>
                 <div className="flow-item">
@@ -187,7 +187,7 @@ const TokenPage: React.FC = () => {
                   <span className="arrow">→</span>
                 </div>
                 <div className="flow-item">
-                  <span>Dividends to $BAPP holders</span>
+                  <span>Dividends to $BCODE holders</span>
                   <span className="arrow">→</span>
                 </div>
                 <div className="flow-item">
@@ -195,7 +195,7 @@ const TokenPage: React.FC = () => {
                 </div>
               </div>
               <p style={{textAlign: 'center', marginTop: '20px', fontSize: '14px', color: 'rgba(255, 255, 255, 0.6)'}}>
-                The Bitcoin App Exchange enables creators to tokenize, sell shares, and trade their work,
+                The Bitcoin Code Platform enables developers to monetize, sell, and trade their code,
                 generating platform fees that contribute to the ecosystem's sustainability.
               </p>
             </div>
@@ -204,7 +204,7 @@ const TokenPage: React.FC = () => {
 
         {/* How to Contribute Section */}
         <section className="contribute-section">
-          <h2>How to Earn $BAPP Tokens</h2>
+          <h2>How to Earn $BCODE Tokens</h2>
           <div className="contribute-steps">
             <div className="step">
               <div className="step-number">1</div>
@@ -248,7 +248,7 @@ const TokenPage: React.FC = () => {
             <div className="stat">
               <h3>Total Supply</h3>
               <p className="stat-value">1,000,000,000</p>
-              <p className="stat-label">$BAPP tokens</p>
+              <p className="stat-label">$BCODE tokens</p>
             </div>
             <div className="stat">
               <h3>Distributed</h3>
@@ -273,13 +273,13 @@ const TokenPage: React.FC = () => {
           <h2>Legal & Regulatory Notice</h2>
           <div className="legal-content">
             <p>
-              <strong>Revenue Sharing Model:</strong> The $BAPP token is designed to enable revenue 
+              <strong>Revenue Sharing Model:</strong> The $BCODE token is designed to enable revenue 
               sharing with contributors through dividend distributions. Token holders may receive dividends 
-              based on platform revenues from subscriptions and exchange fees.
+              based on platform revenues from subscriptions and platform fees.
             </p>
             <p>
-              <strong>Trading & Liquidity:</strong> The $BAPP token is intended to be freely tradable 
-              on the Bitcoin App Exchange and associated platforms. We encourage an active secondary 
+              <strong>Trading & Liquidity:</strong> The $BCODE token is intended to be freely tradable 
+              on the Bitcoin Code Platform and associated platforms. We encourage an active secondary 
               market to provide liquidity and price discovery for contributors' work.
             </p>
             <p>
@@ -300,7 +300,7 @@ const TokenPage: React.FC = () => {
           <h2>Ready to Build the Future?</h2>
           <div className="cta-buttons">
             <a 
-              href="https://github.com/bitcoin-apps-suite/bitcoin-app" 
+              href="https://github.com/bitcoin-apps-suite/bitcoin-code" 
               target="_blank" 
               rel="noopener noreferrer"
               className="cta-btn primary"
