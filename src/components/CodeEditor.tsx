@@ -14,9 +14,13 @@ import {
   Copy,
   Play,
   Bug,
-  Package
+  Package,
+  Code2,
+  Bot
 } from 'lucide-react';
+import AIChatSidebar from './AIChatSidebar';
 import './CodeEditor.css';
+import './AIChatSidebar.css';
 
 interface FileNode {
   name: string;
@@ -65,14 +69,17 @@ function main() {
     }
   ]);
   
-  const [sidebarWidth] = useState(240);
-  const [terminalHeight] = useState(200);
-  const [showTerminal, setShowTerminal] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState(280);
+  const [aiChatWidth, setAiChatWidth] = useState(400);
+  const [terminalHeight, setTerminalHeight] = useState(300);
+  const [showTerminal, setShowTerminal] = useState(true);
+  const [showAiChat, setShowAiChat] = useState(true);
   const [activePanel, setActivePanel] = useState<'explorer' | 'search' | 'git' | 'debug'>('explorer');
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['src', 'components']));
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const editorRef = useRef<HTMLTextAreaElement>(null);
   const [cursorPosition] = useState({ line: 1, column: 1 });
+  const [isResizing, setIsResizing] = useState<'sidebar' | 'terminal' | 'aichat' | null>(null);
 
   // Sample file structure
   const fileTree: FileNode = {
@@ -295,8 +302,18 @@ MIT`,
 
   return (
     <div className="code-editor">
-      {/* Activity Bar */}
-      <div className="activity-bar">
+      {/* Header Bar */}
+      <div className="code-editor-header">
+        <div className="header-logo">
+          <Code2 size={20} />
+          <span className="app-title">Bitcoin Code</span>
+        </div>
+      </div>
+      
+      {/* Main Editor Container */}
+      <div className="code-editor-main">
+        {/* Activity Bar */}
+        <div className="activity-bar">
         <button 
           className={`activity-item ${activePanel === 'explorer' ? 'active' : ''}`}
           onClick={() => setActivePanel('explorer')}
@@ -326,6 +343,13 @@ MIT`,
           <Bug size={20} />
         </button>
         <div className="activity-spacer" />
+        <button 
+          className={`activity-item ${showAiChat ? 'active' : ''}`}
+          onClick={() => setShowAiChat(!showAiChat)}
+          title="AI Assistant"
+        >
+          <Bot size={20} />
+        </button>
         <button className="activity-item" title="Settings">
           <Settings size={20} />
         </button>
@@ -408,36 +432,78 @@ MIT`,
               <button className="toolbar-btn" title="Build">
                 <Package size={16} />
               </button>
+              <button 
+                className={`toolbar-btn ${showTerminal ? 'active' : ''}`}
+                onClick={() => setShowTerminal(!showTerminal)}
+                title="Toggle Terminal"
+              >
+                <Terminal size={16} />
+              </button>
             </div>
-            <div className="code-area">
-              <div className="line-numbers">
-                {activeTabContent.content.split('\n').map((_, i) => (
-                  <div key={i} className="line-number">{i + 1}</div>
-                ))}
+            <div className="editor-with-terminal">
+              <div className="code-area" style={{ 
+                height: showTerminal ? `calc(100% - ${terminalHeight}px)` : '100%' 
+              }}>
+                <div className="line-numbers">
+                  {activeTabContent.content.split('\n').map((_, i) => (
+                    <div key={i} className="line-number">{i + 1}</div>
+                  ))}
+                </div>
+                <textarea
+                  ref={editorRef}
+                  className="code-textarea"
+                  value={activeTabContent.content}
+                  onChange={(e) => updateTabContent(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Tab') {
+                      e.preventDefault();
+                      const start = e.currentTarget.selectionStart;
+                      const end = e.currentTarget.selectionEnd;
+                      const value = e.currentTarget.value;
+                      const newValue = value.substring(0, start) + '  ' + value.substring(end);
+                      updateTabContent(newValue);
+                      setTimeout(() => {
+                        if (editorRef.current) {
+                          editorRef.current.selectionStart = editorRef.current.selectionEnd = start + 2;
+                        }
+                      }, 0);
+                    }
+                  }}
+                  spellCheck={false}
+                  placeholder="Start coding..."
+                />
               </div>
-              <textarea
-                ref={editorRef}
-                className="code-textarea"
-                value={activeTabContent.content}
-                onChange={(e) => updateTabContent(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Tab') {
-                    e.preventDefault();
-                    const start = e.currentTarget.selectionStart;
-                    const end = e.currentTarget.selectionEnd;
-                    const value = e.currentTarget.value;
-                    const newValue = value.substring(0, start) + '  ' + value.substring(end);
-                    updateTabContent(newValue);
-                    setTimeout(() => {
-                      if (editorRef.current) {
-                        editorRef.current.selectionStart = editorRef.current.selectionEnd = start + 2;
-                      }
-                    }, 0);
-                  }
-                }}
-                spellCheck={false}
-                placeholder="Start coding..."
-              />
+              
+              {/* Terminal */}
+              {showTerminal && (
+                <div className="terminal-panel" style={{ height: `${terminalHeight}px` }}>
+                  <div className="terminal-header">
+                    <span>TERMINAL</span>
+                    <button onClick={() => setShowTerminal(false)}>
+                      <X size={14} />
+                    </button>
+                  </div>
+                  <div className="terminal-content">
+                    <div className="terminal-line">
+                      <span className="terminal-prompt">bitcoin-code $</span>
+                      <span className="terminal-output"> npm start</span>
+                    </div>
+                    <div className="terminal-line">
+                      <span className="terminal-output">Starting Bitcoin development server...</span>
+                    </div>
+                    <div className="terminal-line">
+                      <span className="terminal-success">✓ Server running on http://localhost:3010</span>
+                    </div>
+                    <div className="terminal-line">
+                      <span className="terminal-success">✓ Bitcoin network connected</span>
+                    </div>
+                    <div className="terminal-line">
+                      <span className="terminal-prompt">bitcoin-code $</span>
+                      <input className="terminal-input" type="text" />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -457,48 +523,15 @@ MIT`,
           </div>
         </div>
       </div>
-
-      {/* Terminal */}
-      {showTerminal && (
-        <div className="terminal-panel" style={{ height: `${terminalHeight}px` }}>
-          <div className="terminal-header">
-            <span>TERMINAL</span>
-            <button onClick={() => setShowTerminal(false)}>
-              <X size={14} />
-            </button>
-          </div>
-          <div className="terminal-content">
-            <div className="terminal-line">
-              <span className="terminal-prompt">bitcoin-code $</span>
-              <span className="terminal-output"> npm start</span>
-            </div>
-            <div className="terminal-line">
-              <span className="terminal-output">Starting Bitcoin development server...</span>
-            </div>
-            <div className="terminal-line">
-              <span className="terminal-success">✓ Server running on http://localhost:3000</span>
-            </div>
-            <div className="terminal-line">
-              <span className="terminal-success">✓ Bitcoin network connected</span>
-            </div>
-            <div className="terminal-line">
-              <span className="terminal-prompt">bitcoin-code $</span>
-              <input className="terminal-input" type="text" />
-            </div>
-          </div>
-        </div>
+      
+      {/* AI Chat Sidebar - Right Side */}
+      {showAiChat && (
+        <AIChatSidebar 
+          width={aiChatWidth}
+          onResize={setAiChatWidth}
+        />
       )}
-
-      {/* Terminal Toggle */}
-      {!showTerminal && (
-        <button 
-          className="terminal-toggle"
-          onClick={() => setShowTerminal(true)}
-          title="Toggle Terminal"
-        >
-          <Terminal size={16} />
-        </button>
-      )}
+      </div>
     </div>
   );
 };

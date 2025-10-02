@@ -3675,27 +3675,6 @@ main {
   transform: scale(1.1);
 }
 
-/* Back to Home Button */
-.back-to-home {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 100;
-  padding: 0.5rem 1rem;
-  background: rgba(59, 130, 246, 0.9);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
-
-.back-to-home:hover {
-  background: #22c55e;
-  transform: translateX(-5px);
-}
-
 /* Homepage Styles */
 .homepage {
   width: 100%;

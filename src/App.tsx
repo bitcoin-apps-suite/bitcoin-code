@@ -9,7 +9,8 @@ import DevSidebar from './components/OSDevSidebar';
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react';
 
 function App() {
-  const [showBuilder, setShowBuilder] = useState(false);
+  const [showBuilder, setShowBuilder] = useState(true);
+  const [isDevSidebarCollapsed, setIsDevSidebarCollapsed] = useState(true);
 
   const HomePage = () => (
     <div className="homepage">
@@ -233,19 +234,16 @@ app.createTransaction({
         onOpenLibraryModal={() => console.log('Open library modal')}
       />
       <div className="app-container" style={{ display: 'flex', flex: 1, position: 'relative', marginTop: '72px' }}>
-        <DevSidebar />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <DevSidebar onToggle={setIsDevSidebarCollapsed} />
+        <div style={{ 
+          flex: 1, 
+          display: 'flex', 
+          flexDirection: 'column',
+          marginLeft: isDevSidebarCollapsed ? '60px' : '260px',
+          transition: 'margin-left 0.3s ease'
+        }}>
           {showBuilder ? (
-            <>
-              <button 
-                className="back-to-home"
-                onClick={() => setShowBuilder(false)}
-                style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 100 }}
-              >
-                ← Back to Home
-              </button>
-              <CodeEditor />
-            </>
+            <CodeEditor />
           ) : (
             <Routes>
               <Route path="/" element={<HomePage />} />

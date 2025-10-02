@@ -1,11 +1,48 @@
 /* VSCode-like Code Editor - Bitcoin Code Green Theme */
 .code-editor {
   display: flex;
+  flex-direction: column;
   height: calc(100vh - 94px); /* Account for taskbar and POC banner */
   background: #0a0a0a;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
   font-size: 13px;
   position: relative;
+  overflow: hidden;
+}
+
+/* Header Bar */
+.code-editor-header {
+  height: 40px;
+  background: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-logo svg {
+  color: #22c55e;
+}
+
+.app-title {
+  color: #22c55e;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Main Editor Container */
+.code-editor-main {
+  display: flex;
+  flex: 1;
   overflow: hidden;
 }
 
@@ -281,6 +318,13 @@
   overflow: hidden;
 }
 
+.editor-with-terminal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 /* Editor Toolbar */
 .editor-toolbar {
   display: flex;
@@ -310,7 +354,8 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.toolbar-btn:active {
+.toolbar-btn:active,
+.toolbar-btn.active {
   background: rgba(34, 197, 94, 0.1);
   border-color: #22c55e;
   color: #22c55e;
@@ -405,17 +450,13 @@
 
 /* Terminal Panel */
 .terminal-panel {
-  position: absolute;
-  bottom: 22px; /* Above status bar */
-  left: 0;
-  right: 0;
   background: #000000;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   resize: vertical;
   overflow: auto;
-  z-index: 10;
+  flex-shrink: 0;
 }
 
 .terminal-header {

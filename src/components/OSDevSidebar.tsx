@@ -27,7 +27,11 @@ import {
 } from 'lucide-react'
 import './OSDevSidebar.css'
 
-export default function DevSidebar() {
+interface DevSidebarProps {
+  onToggle?: (isCollapsed: boolean) => void;
+}
+
+export default function DevSidebar({ onToggle }: DevSidebarProps) {
   const location = useLocation()
   const pathname = location.pathname
   const [isCollapsed, setIsCollapsed] = useState(() => {
@@ -44,7 +48,14 @@ export default function DevSidebar() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('devSidebarCollapsed', isCollapsed.toString())
     }
-  }, [isCollapsed])
+    // Notify parent component of state change
+    onToggle?.(isCollapsed)
+  }, [isCollapsed, onToggle])
+
+  // Initial notification to parent component
+  useEffect(() => {
+    onToggle?.(isCollapsed)
+  }, [onToggle])
 
   // Fetch GitHub issues count
   useEffect(() => {
