@@ -212,7 +212,7 @@ export default function DevSidebar() {
           <div className="dev-sidebar-cta">
             <p>Join Development</p>
             <a 
-              href="https://github.com/bitcoin-apps-suite/bitcoin-OS" 
+              href="https://github.com/bitcoin-apps-suite/bitcoin-code" 
               target="_blank" 
               rel="noopener noreferrer"
               className="dev-sidebar-cta-button"
