@@ -38,12 +38,12 @@ const AppBuilder: React.FC = () => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bitcoin App</title>
+    <title>My Bitcoin Code App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <h1>Welcome to Bitcoin App Builder</h1>
+        <h1>Welcome to Bitcoin Code</h1>
         <p>Start building your decentralized application!</p>
         <button id="connectBtn">Connect Wallet</button>
     </div>
@@ -102,8 +102,8 @@ button:hover {
     {
       name: 'app.js',
       type: 'js',
-      content: `// Bitcoin App Builder - Main Application Logic
-console.log('Bitcoin App initialized!');
+      content: `// Bitcoin Code - Main Application Logic
+console.log('Bitcoin Code initialized!');
 
 // Connect wallet functionality
 document.getElementById('connectBtn').addEventListener('click', async () => {
@@ -261,7 +261,7 @@ const app = new BitcoinApp();`
       <div className="builder-header">
         <div className="builder-title">
           <Code2 className="icon" />
-          <h2>Bitcoin App Builder</h2>
+          <h2>Bitcoin Code</h2>
         </div>
         <div className="builder-actions">
           <button onClick={() => setShowLibraryModal(true)} className="action-btn">

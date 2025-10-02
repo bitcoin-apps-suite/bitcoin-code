@@ -38,13 +38,13 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
 
   const menus: MenuData[] = [
     {
-      label: 'Bitcoin App',
+      label: 'Bitcoin Code',
       items: [
         { label: 'Home', action: () => {
           window.location.href = '/';
         }},
         { divider: true },
-        { label: 'About Bitcoin App Builder', action: () => alert('Bitcoin App Builder v1.0\n\nBuild decentralized applications on Bitcoin SV\n\n© 2025 The Bitcoin Corporation LTD\nAll rights reserved') },
+        { label: 'About Bitcoin Code', action: () => alert('Bitcoin Code v1.0\n\nBuild decentralized applications on Bitcoin SV\n\n© 2025 The Bitcoin Corporation LTD\nAll rights reserved') },
         { label: 'Features', action: () => {
           const event = new CustomEvent('showFeaturesPage');
           window.dispatchEvent(event);
@@ -161,7 +161,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
       label: 'Help',
       items: [
         { label: 'Getting Started', href: '/docs/getting-started' },
-        { label: 'Bitcoin App Builder Help', shortcut: '⌘?', action: () => alert('Bitcoin App Builder v1.0\n\nBuild and deploy decentralized apps on Bitcoin') },
+        { label: 'Bitcoin Code Help', shortcut: '⌘?', action: () => alert('Bitcoin Code v1.0\n\nBuild and deploy decentralized apps on Bitcoin') },
         { label: 'Keyboard Shortcuts', shortcut: '⌘/', action: () => console.log('Show shortcuts') },
         { divider: true },
         { label: 'Report an Issue', href: 'https://github.com/bitcoin-apps-suite/bitcoin-app/issues' },
