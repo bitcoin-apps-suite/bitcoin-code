@@ -6,8 +6,11 @@ import CodeExchange from './components/CodeExchange';
 import TokenPage from './pages/TokenPage';
 import ContractsPage from './pages/ContractsPage';
 import CreateOfferPage from './pages/developers/CreateOfferPage';
+import GuidesPage from './pages/developers/GuidesPage';
+import TemplatesPage from './pages/developers/TemplatesPage';
 import CommissionPage from './pages/maintainers/CommissionPage';
 import FindDevelopersPage from './pages/maintainers/FindDevelopersPage';
+import ContributorsPage from './pages/contributors/ContributorsPage';
 import ProofOfConceptBar from './components/ProofOfConceptBar';
 import CleanTaskbar from './components/CleanTaskbar';
 import Dock from './components/Dock';
@@ -255,8 +258,11 @@ app.createTransaction({
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
               <Route path="/developers/create-offer" element={<CreateOfferPage />} />
+              <Route path="/developers/guides" element={<GuidesPage />} />
+              <Route path="/developers/templates" element={<TemplatesPage />} />
               <Route path="/maintainers/commission" element={<CommissionPage />} />
               <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
+              <Route path="/contributors" element={<ContributorsPage />} />
             </Routes>
           ) : (
             <Routes>
@@ -265,8 +271,11 @@ app.createTransaction({
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
               <Route path="/developers/create-offer" element={<CreateOfferPage />} />
+              <Route path="/developers/guides" element={<GuidesPage />} />
+              <Route path="/developers/templates" element={<TemplatesPage />} />
               <Route path="/maintainers/commission" element={<CommissionPage />} />
               <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
+              <Route path="/contributors" element={<ContributorsPage />} />
             </Routes>
           )}
         </div>
