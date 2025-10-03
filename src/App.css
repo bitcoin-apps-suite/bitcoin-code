@@ -5,6 +5,23 @@
   box-sizing: border-box;
 }
 
+/* Mobile optimizations */
+html {
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  /* Improve font rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Prevent overscrolling */
+  overscroll-behavior: none;
+  /* Better mobile text rendering */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 .App {
   min-height: 100vh;
   background: #0a0a0f;
@@ -28,12 +45,48 @@
 @media (max-width: 768px) {
   .App {
     padding-top: 104px; /* Taskbar (32px) + POC banner (72px) on mobile */
+    /* Improve mobile layout */
+    overflow-x: hidden;
+  }
+  
+  /* Better mobile typography */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Better touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .App {
     padding-top: 100px; /* Taskbar (32px) + POC banner (68px) on very small screens */
+    padding-bottom: 80px; /* Extra space for dock */
+  }
+  
+  /* Larger touch targets for very small screens */
+  button, a, [role="button"] {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px;
+  }
+  
+  /* Better text sizing */
+  input, select, textarea {
+    font-size: 18px; /* Prevent zoom on iOS */
+    padding: 12px;
   }
 }
 

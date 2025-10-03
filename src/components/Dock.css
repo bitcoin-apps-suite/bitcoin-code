@@ -196,52 +196,79 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .bitcoin-dock {
-    bottom: 10px;
-    padding: 6px;
-    border-radius: 16px;
+    bottom: 12px;
+    padding: 8px;
+    border-radius: 20px;
+    /* Improve touch accessibility */
+    min-height: 64px;
   }
   
   .dock-container {
-    height: 56px;
-    padding: 0 6px;
+    height: 60px;
+    padding: 0 8px;
   }
   
   .dock-apps {
-    gap: 6px;
-  }
-  
-  .dock-status {
     gap: 8px;
   }
   
+  .dock-status {
+    gap: 10px;
+  }
+  
   .dock-app {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    /* Better touch targets */
+    min-width: 44px;
+    min-height: 44px;
   }
   
   .dock-app-icon {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
+  }
+  
+  /* Improved touch interactions */
+  .dock-app:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
   }
   
   .dock-app:hover:not(.disabled) {
-    transform: translateY(-4px) scale(1.1);
+    transform: translateY(-3px) scale(1.05);
+  }
+  
+  /* Hide hover tooltips on touch devices */
+  .dock-app:hover:not(.disabled)::before {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .bitcoin-dock {
-    width: calc(100% - 20px);
-    bottom: 5px;
-    left: 10px;
-    right: 10px;
+    width: calc(100% - 16px);
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
     transform: none;
+    /* Better visual padding */
+    padding: 10px;
   }
   
   .dock-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    /* Better spacing for small screens */
+    height: 64px;
+    padding: 0 4px;
+  }
+  
+  .dock-apps {
+    gap: 6px;
+    /* Ensure apps don't compress too much */
+    min-width: max-content;
   }
   
   .dock-status {
@@ -254,5 +281,19 @@
   
   .dock-app {
     flex-shrink: 0;
+    /* Slightly larger touch targets on very small screens */
+    width: 50px;
+    height: 50px;
+  }
+  
+  .dock-app-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* Better touch feedback */
+  .dock-app:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.1);
   }
 }
