@@ -343,7 +343,7 @@ const ContractsPage: React.FC = () => {
             <h1>Bitcoin App <span style={{color: '#ffffff'}}>Contracts</span></h1>
             <p className="contracts-tagline">
               {activeTab === 'developer' 
-                ? 'Claim contracts, deliver code, earn BAPP tokens'
+                ? 'Claim contracts, deliver code, earn $BCODE tokens'
                 : 'Create content, fulfill contracts, get paid in BAPP'}
             </p>
             <div className="contracts-badge">CONTRACTS</div>

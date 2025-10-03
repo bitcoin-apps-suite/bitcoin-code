@@ -101,6 +101,7 @@ interface CodeExchangeProps {
 const CodeExchange: React.FC<CodeExchangeProps> = ({ isOpen = true, onClose = () => {}, onSelectCode }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType] = useState<'all' | 'app' | 'contract' | 'library' | 'snippet'>('all');
+  const [sortBy] = useState<'price' | 'volume' | 'rating' | 'recent'>('price');
   const [activeTab, setActiveTab] = useState<'marketplace' | 'portfolio' | 'mint'>('marketplace');
   const [selectedNFT, setSelectedNFT] = useState<CodeNFT | null>(null);
 
