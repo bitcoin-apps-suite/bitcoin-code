@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './TokenPage.css';
-import Footer from '../components/Footer';
 
 const TokenPage: React.FC = () => {
   const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(() => {
@@ -45,7 +44,7 @@ const TokenPage: React.FC = () => {
         <section className="token-hero">
           <h1><span style={{color: '#ffffff'}}>The</span> Bitcoin Code <span style={{color: '#ffffff'}}>Token</span></h1>
           <p className="token-tagline">
-            Open-source development meets sustainable economics
+            Open-source development meets code monetization
           </p>
           <div className="token-badge">$BCODE</div>
         </section>
@@ -55,26 +54,26 @@ const TokenPage: React.FC = () => {
           <h2>Our Open-Source Philosophy</h2>
           <div className="philosophy-content">
             <p>
-              Bitcoin Code is an <strong>open-source project</strong> licensed under MIT and BSV licenses. 
+              Bitcoin Code is an <strong>open-source IDE</strong> licensed under MIT and BSV licenses. 
               Our intention is to foster an open culture where forking, cloning, and adding to the code 
               and features is welcomed and encouraged.
             </p>
             <p>
               The $BCODE token represents our approach to creating a sustainable economic model that 
-              aims to reward contributors while maintaining transparency and openness.
+              rewards code contributors while maintaining transparency and enabling developers to monetize their work.
             </p>
             <div className="philosophy-points">
               <div className="point">
-                <h3>Open Culture</h3>
-                <p>MIT & BSV Licensed, fork-friendly, collaborative</p>
+                <h3>Open Development</h3>
+                <p>MIT & BSV Licensed, fork-friendly, collaborative coding</p>
               </div>
               <div className="point">
-                <h3>Community First</h3>
-                <p>Contributors earn tokens through meaningful work</p>
+                <h3>Code Monetization</h3>
+                <p>Developers earn tokens and dividends from their code NFTs</p>
               </div>
               <div className="point">
-                <h3>Value Aligned</h3>
-                <p>Success shared with those who build it</p>
+                <h3>Community Driven</h3>
+                <p>Contributors own the platform they help build</p>
               </div>
             </div>
           </div>
@@ -320,7 +319,6 @@ const TokenPage: React.FC = () => {
         </section>
       </div>
     </div>
-    <Footer />
     </div>
   );
 };

@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import CodeEditor from './components/CodeEditor';
+import CodeExchange from './components/CodeExchange';
+import TokenPage from './pages/TokenPage';
+import ContractsPage from './pages/ContractsPage';
+import CreateOfferPage from './pages/developers/CreateOfferPage';
+import CommissionPage from './pages/maintainers/CommissionPage';
+import FindDevelopersPage from './pages/maintainers/FindDevelopersPage';
 import ProofOfConceptBar from './components/ProofOfConceptBar';
 import CleanTaskbar from './components/CleanTaskbar';
 import Dock from './components/Dock';
@@ -216,7 +222,7 @@ app.createTransaction({
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2025 Bitcoin Code. Open BSV License</p>
+          <p>© 2025 The Bitcoin Corporation LTD. All rights reserved.</p>
         </div>
       </footer>
     </div>
@@ -243,15 +249,34 @@ app.createTransaction({
           transition: 'margin-left 0.3s ease'
         }}>
           {showBuilder ? (
-            <CodeEditor />
+            <Routes>
+              <Route path="/" element={<CodeEditor />} />
+              <Route path="/exchange" element={<CodeExchange />} />
+              <Route path="/token" element={<TokenPage />} />
+              <Route path="/contracts" element={<ContractsPage />} />
+              <Route path="/developers/create-offer" element={<CreateOfferPage />} />
+              <Route path="/maintainers/commission" element={<CommissionPage />} />
+              <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
+            </Routes>
           ) : (
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/exchange" element={<CodeExchange />} />
+              <Route path="/token" element={<TokenPage />} />
+              <Route path="/contracts" element={<ContractsPage />} />
+              <Route path="/developers/create-offer" element={<CreateOfferPage />} />
+              <Route path="/maintainers/commission" element={<CommissionPage />} />
+              <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
             </Routes>
           )}
         </div>
       </div>
       <Dock />
+      <footer className="global-footer">
+        <div className="global-footer-content">
+          <p>© 2025 The Bitcoin Corporation LTD. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }

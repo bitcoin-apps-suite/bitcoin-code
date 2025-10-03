@@ -81,38 +81,53 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
     section?: string
     external?: boolean
   }> = [
-    // Token & Core at top
+    // Token & Ecosystem
     { path: '/token', icon: Coins, label: '$BCODE Token', badge: 'NEW' },
-    { path: '/contracts', icon: Terminal, label: 'Smart Contracts', badge: 'BETA' },
     { path: '/exchange', icon: Download, label: 'Token Exchange' },
+    { path: '/contracts', icon: Terminal, label: 'Smart Contracts', badge: 'BETA' },
     
-    // System Operations
+    // Developers Section
     { divider: true },
-    { section: 'SYSTEM' },
-    { path: '/tasks', icon: ListTodo, label: 'Task Manager' },
-    { path: '/contributors', icon: Users, label: 'Contributors', badge: '42' },
-    { path: '/docs', icon: BookOpen, label: 'Documentation' },
+    { section: 'DEVELOPERS' },
+    { path: '/developers/create-offer', icon: Upload, label: 'Create Service Offer' },
+    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code/issues', icon: Briefcase, label: 'Find Contracts', badge: issueCount > 0 ? String(issueCount) : '0', external: true },
+    { path: '/developers/guides', icon: BookOpen, label: 'Development Guides' },
+    { path: '/developers/templates', icon: FileCode, label: 'Code Templates' },
     
-    // Development
+    // Maintainers Section
     { divider: true },
-    { section: 'DEVELOPMENT' },
+    { section: 'MAINTAINERS' },
+    { path: '/maintainers/commission', icon: Coins, label: 'Commission Development' },
+    { path: '/maintainers/find-developers', icon: Users, label: 'Find Developers', badge: '42' },
+    { path: '/maintainers/enterprise', icon: Lock, label: 'Enterprise Solutions' },
+    { path: '/maintainers/reviews', icon: CheckCircle, label: 'Code Reviews' },
+    
+    // Contributors Section  
+    { divider: true },
+    { section: 'CONTRIBUTORS' },
+    { path: '/contributors/tasks', icon: ListTodo, label: 'Open Source Tasks' },
+    { path: '/contributors/bounties', icon: Package, label: 'Bounty Programs' },
+    { path: '/contributors/projects', icon: Activity, label: 'Community Projects' },
+    { path: '/contributors', icon: Users, label: 'All Contributors', badge: '42' },
+    
+    // System & Tools
+    { divider: true },
+    { section: 'SYSTEM & TOOLS' },
     { path: '/api', icon: Package, label: 'API Reference' },
     { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code', icon: Github, label: 'GitHub Repository', external: true },
-    { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code/issues', icon: FileCode, label: 'Issues', badge: issueCount > 0 ? String(issueCount) : '0', external: true },
     { path: 'https://github.com/bitcoin-apps-suite/bitcoin-code/pulls', icon: GitPullRequest, label: 'Pull Requests', external: true },
-    
-    // System Status
-    { divider: true },
+    { path: '/docs', icon: FileText, label: 'Documentation' },
     { path: '/changelog', icon: History, label: 'Changelog' },
     { path: '/status', icon: CheckCircle, label: 'System Status', badge: 'OK' }
   ]
 
   const stats = {
-    totalSupply: '1,000,000,000,000',
+    totalSupply: '1,000,000,000',
     distributed: '12,456,789',
-    contributors: '42',
-    openTasks: issueCount || 0,
-    networkNodes: '150+'
+    activeDevelopers: '42',
+    openContracts: issueCount || 0,
+    activeMaintainers: '15',
+    bountyPool: '₿2.5'
   }
 
   return (
@@ -193,7 +208,7 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
       {/* Stats section */}
       {!isCollapsed && (
         <div className="dev-sidebar-stats">
-          <h4>$BCODE Stats</h4>
+          <h4>Platform Stats</h4>
           <div className="dev-stat">
             <span className="dev-stat-label">Total Supply</span>
             <span className="dev-stat-value">{stats.totalSupply}</span>
@@ -203,16 +218,20 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
             <span className="dev-stat-value">{stats.distributed}</span>
           </div>
           <div className="dev-stat">
-            <span className="dev-stat-label">Contributors</span>
-            <span className="dev-stat-value">{stats.contributors}</span>
+            <span className="dev-stat-label">Active Developers</span>
+            <span className="dev-stat-value">{stats.activeDevelopers}</span>
           </div>
           <div className="dev-stat">
-            <span className="dev-stat-label">Open Tasks</span>
-            <span className="dev-stat-value">{stats.openTasks}</span>
+            <span className="dev-stat-label">Open Contracts</span>
+            <span className="dev-stat-value">{stats.openContracts}</span>
           </div>
           <div className="dev-stat">
-            <span className="dev-stat-label">Network Nodes</span>
-            <span className="dev-stat-value">{stats.networkNodes}</span>
+            <span className="dev-stat-label">Maintainers</span>
+            <span className="dev-stat-value">{stats.activeMaintainers}</span>
+          </div>
+          <div className="dev-stat">
+            <span className="dev-stat-label">Bounty Pool</span>
+            <span className="dev-stat-value">{stats.bountyPool}</span>
           </div>
         </div>
       )}
@@ -221,14 +240,12 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
       {!isCollapsed && (
         <div className="dev-sidebar-footer">
           <div className="dev-sidebar-cta">
-            <p>Join Development</p>
+            <p>Join the Code Economy</p>
             <a 
-              href="https://github.com/bitcoin-apps-suite/bitcoin-code" 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="/developers/create-offer" 
               className="dev-sidebar-cta-button"
             >
-              Start Contributing
+              Create Service Offer
             </a>
           </div>
         </div>

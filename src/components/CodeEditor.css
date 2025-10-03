@@ -17,6 +17,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 16px;
   flex-shrink: 0;
 }
@@ -37,6 +38,37 @@
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.5px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-btn.active {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: #22c55e;
+  color: #22c55e;
 }
 
 /* Main Editor Container */
@@ -365,45 +397,23 @@
 .code-area {
   flex: 1;
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   background: #0a0a0a;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  position: relative;
 }
 
-.line-numbers {
-  padding: 12px 0;
-  background: #000000;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: right;
-  user-select: none;
-  min-width: 50px;
+/* Monaco Editor will handle its own styling */
+.code-area .monaco-editor {
+  background: #0a0a0a !important;
 }
 
-.line-number {
-  padding: 0 12px;
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 12px;
-  line-height: 20px;
-  font-family: inherit;
+.code-area .monaco-editor .margin {
+  background: #000000 !important;
 }
 
-.code-textarea {
-  flex: 1;
-  padding: 12px;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 13px;
-  line-height: 20px;
-  outline: none;
-  resize: none;
-  tab-size: 2;
-  white-space: pre;
-}
-
-.code-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+.code-area .monaco-editor .monaco-editor-background {
+  background: #0a0a0a !important;
 }
 
 /* Syntax Highlighting Colors (Green Theme) */

@@ -4173,3 +4173,38 @@ main {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
 }
+
+/* Global Footer */
+.global-footer {
+  background: #000000;
+  border-top: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 16px 0;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.global-footer-content {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.global-footer-content p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Ensure app has proper min-height for footer positioning */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-container {
+  flex: 1;
+}

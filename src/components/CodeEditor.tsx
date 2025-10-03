@@ -16,9 +16,11 @@ import {
   Bug,
   Package,
   Code2,
-  Bot
+  Bot,
+  Coins
 } from 'lucide-react';
 import AIChatSidebar from './AIChatSidebar';
+import MonacoCodeEditor from './MonacoCodeEditor';
 import './CodeEditor.css';
 import './AIChatSidebar.css';
 
@@ -31,7 +33,7 @@ interface FileNode {
   language?: string;
 }
 
-interface Tab {
+export interface Tab {
   id: string;
   name: string;
   path: string;
@@ -77,7 +79,6 @@ function main() {
   const [activePanel, setActivePanel] = useState<'explorer' | 'search' | 'git' | 'debug'>('explorer');
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['src', 'components']));
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const editorRef = useRef<HTMLTextAreaElement>(null);
   const [cursorPosition] = useState({ line: 1, column: 1 });
   const [isResizing, setIsResizing] = useState<'sidebar' | 'terminal' | 'aichat' | null>(null);
 
@@ -308,6 +309,22 @@ MIT`,
           <Code2 size={20} />
           <span className="app-title">Bitcoin Code</span>
         </div>
+        <div className="header-nav">
+          <button 
+            className="nav-btn active"
+            onClick={() => window.location.href = '/'}
+          >
+            <Code2 size={16} />
+            Code Editor
+          </button>
+          <button 
+            className="nav-btn"
+            onClick={() => window.location.href = '/exchange'}
+          >
+            <Coins size={16} />
+            NFT Exchange
+          </button>
+        </div>
       </div>
       
       {/* Main Editor Container */}
@@ -444,33 +461,9 @@ MIT`,
               <div className="code-area" style={{ 
                 height: showTerminal ? `calc(100% - ${terminalHeight}px)` : '100%' 
               }}>
-                <div className="line-numbers">
-                  {activeTabContent.content.split('\n').map((_, i) => (
-                    <div key={i} className="line-number">{i + 1}</div>
-                  ))}
-                </div>
-                <textarea
-                  ref={editorRef}
-                  className="code-textarea"
-                  value={activeTabContent.content}
-                  onChange={(e) => updateTabContent(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Tab') {
-                      e.preventDefault();
-                      const start = e.currentTarget.selectionStart;
-                      const end = e.currentTarget.selectionEnd;
-                      const value = e.currentTarget.value;
-                      const newValue = value.substring(0, start) + '  ' + value.substring(end);
-                      updateTabContent(newValue);
-                      setTimeout(() => {
-                        if (editorRef.current) {
-                          editorRef.current.selectionStart = editorRef.current.selectionEnd = start + 2;
-                        }
-                      }, 0);
-                    }
-                  }}
-                  spellCheck={false}
-                  placeholder="Start coding..."
+                <MonacoCodeEditor
+                  tab={activeTabContent}
+                  onContentChange={updateTabContent}
                 />
               </div>
               

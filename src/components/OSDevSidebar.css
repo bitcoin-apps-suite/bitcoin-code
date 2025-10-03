@@ -65,14 +65,14 @@
 }
 
 .dev-sidebar-logo {
-  color: #d946ef;
+  color: #22c55e;
   flex-shrink: 0;
 }
 
 .dev-sidebar-toggle {
   background: transparent;
   border: none;
-  color: #d946ef;
+  color: #22c55e;
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -83,7 +83,7 @@
 }
 
 .dev-sidebar-toggle:hover {
-  background: rgba(217, 70, 239, 0.1);
+  background: rgba(34, 197, 94, 0.1);
   transform: scale(1.1);
 }
 
@@ -108,14 +108,14 @@
 }
 
 .dev-sidebar-item:hover {
-  background: rgba(217, 70, 239, 0.1);
-  color: #d946ef;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
   transform: translateX(2px);
 }
 
 .dev-sidebar-item.active {
-  background: linear-gradient(135deg, rgba(217, 70, 239, 0.2), rgba(168, 85, 247, 0.2));
-  color: #d946ef;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+  color: #22c55e;
   font-weight: 600;
 }
 
@@ -127,7 +127,7 @@
   transform: translateY(-50%);
   width: 3px;
   height: 70%;
-  background: #d946ef;
+  background: #22c55e;
   border-radius: 0 2px 2px 0;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .dev-sidebar-badge {
-  background: linear-gradient(135deg, #d946ef, #a855f7);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #1a1a1a;
   font-size: 10px;
   font-weight: 700;
@@ -157,7 +157,7 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #a855f7;
+  color: #16a34a;
   text-transform: uppercase;
 }
 
@@ -168,7 +168,7 @@
 }
 
 .dev-sidebar-stats h4 {
-  color: #d946ef;
+  color: #22c55e;
   font-size: 12px;
   text-transform: uppercase;
   margin: 0 0 12px 0;
@@ -188,7 +188,7 @@
 }
 
 .dev-stat-value {
-  color: #d946ef;
+  color: #22c55e;
   font-weight: 600;
 }
 
@@ -198,15 +198,15 @@
 }
 
 .dev-sidebar-cta {
-  background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(168, 85, 247, 0.1));
-  border: 1px solid rgba(217, 70, 239, 0.3);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1));
+  border: 1px solid rgba(34, 197, 94, 0.3);
   border-radius: 8px;
   padding: 12px;
   text-align: center;
 }
 
 .dev-sidebar-cta p {
-  color: #d946ef;
+  color: #22c55e;
   font-size: 12px;
   margin: 0 0 8px 0;
   text-transform: uppercase;
@@ -215,7 +215,7 @@
 
 .dev-sidebar-cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #d946ef, #a855f7);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #1a1a1a;
   padding: 6px 16px;
   border-radius: 4px;
@@ -227,7 +227,7 @@
 
 .dev-sidebar-cta-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(217, 70, 239, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
 }
 
 /* Collapsed state specific styles */
@@ -259,12 +259,12 @@
 }
 
 .dev-sidebar-nav::-webkit-scrollbar-thumb {
-  background: rgba(217, 70, 239, 0.3);
+  background: rgba(34, 197, 94, 0.3);
   border-radius: 3px;
 }
 
 .dev-sidebar-nav::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 70, 239, 0.5);
+  background: rgba(34, 197, 94, 0.5);
 }
 
 /* Responsive adjustments */

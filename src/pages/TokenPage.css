@@ -277,13 +277,13 @@ section h2 {
 }
 
 .stream:hover {
-  border-color: rgba(255, 165, 0, 0.3);
+  border-color: rgba(34, 197, 94, 0.3);
   background: rgba(255, 255, 255, 0.01);
 }
 
 .stream.featured {
   border-color: #22c55e;
-  background: rgba(255, 165, 0, 0.01);
+  background: rgba(34, 197, 94, 0.01);
 }
 
 .stream.featured::before {
@@ -325,7 +325,7 @@ section h2 {
 
 .value-flow {
   background: transparent;
-  border: 1px solid rgba(255, 165, 0, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 4px;
   padding: 24px;
 }
@@ -380,7 +380,7 @@ section h2 {
 .step {
   text-align: left;
   padding: 16px;
-  border-left: 2px solid rgba(255, 165, 0, 0.3);
+  border-left: 2px solid rgba(34, 197, 94, 0.3);
   padding-left: 16px;
 }
 
@@ -416,7 +416,7 @@ section h2 {
 
 .contribution-examples {
   background: transparent;
-  border-left: 2px solid rgba(255, 165, 0, 0.3);
+  border-left: 2px solid rgba(34, 197, 94, 0.3);
   padding-left: 24px;
   max-width: 800px;
   margin: 0 auto;
@@ -475,7 +475,7 @@ section h2 {
 }
 
 .stat:hover {
-  border-color: rgba(255, 165, 0, 0.3);
+  border-color: rgba(34, 197, 94, 0.3);
   background: rgba(255, 255, 255, 0.01);
 }
 
@@ -578,17 +578,17 @@ section h2 {
 
 .cta-btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 165, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.2);
 }
 
 .cta-btn.secondary {
   background: transparent;
   color: #22c55e;
-  border: 1px solid rgba(255, 165, 0, 0.5);
+  border: 1px solid rgba(34, 197, 94, 0.5);
 }
 
 .cta-btn.secondary:hover {
-  background: rgba(255, 165, 0, 0.05);
+  background: rgba(34, 197, 94, 0.05);
   border-color: #22c55e;
 }
 
