@@ -5,6 +5,7 @@ import CodeEditor from './components/CodeEditor';
 import CodeExchange from './components/CodeExchange';
 import TokenPage from './pages/TokenPage';
 import ContractsPage from './pages/ContractsPage';
+import BitcoinGitPage from './pages/BitcoinGitPage';
 import CreateOfferPage from './pages/developers/CreateOfferPage';
 import GuidesPage from './pages/developers/GuidesPage';
 import TemplatesPage from './pages/developers/TemplatesPage';
@@ -292,6 +293,7 @@ app.createTransaction({
               <Route path="/exchange" element={<CodeExchange />} />
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
+              <Route path="/bitcoin-git" element={<BitcoinGitPage />} />
               <Route path="/developers/create-offer" element={<CreateOfferPage />} />
               <Route path="/developers/guides" element={<GuidesPage />} />
               <Route path="/developers/templates" element={<TemplatesPage />} />
@@ -305,6 +307,7 @@ app.createTransaction({
               <Route path="/exchange" element={<CodeExchange />} />
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
+              <Route path="/bitcoin-git" element={<BitcoinGitPage />} />
               <Route path="/developers/create-offer" element={<CreateOfferPage />} />
               <Route path="/developers/guides" element={<GuidesPage />} />
               <Route path="/developers/templates" element={<TemplatesPage />} />

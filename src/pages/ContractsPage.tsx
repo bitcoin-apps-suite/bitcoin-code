@@ -87,8 +87,8 @@ const ContractsPage: React.FC = () => {
 
   const fetchContracts = async () => {
     try {
-      // Fetch GitHub issues
-      const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-app/issues?state=all&per_page=100');
+      // Fetch GitHub issues from bitcoin-code repository
+      const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/issues?state=open&per_page=100');
       
       // Check for errors
       if (!response.ok) {
@@ -109,18 +109,23 @@ const ContractsPage: React.FC = () => {
       }
       
       // Also fetch pull requests to match with issues
-      const prsResponse = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-app/pulls?state=all&per_page=100');
+      const prsResponse = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/pulls?state=all&per_page=100');
       const pullRequests = prsResponse.ok ? await prsResponse.json() : [];
       
       // Map issues to contracts
       const mappedContracts: Contract[] = issues.map((issue: any) => {
         const body = issue.body || '';
         
-        // Handle both old and new format
+        // Handle both old and new format - first try the new 💰 format from issue titles
+        let rewardMatch = issue.title.match(/💰\s*([\d,]+)M?\s*-/);
         let priorityMatch = body.match(/\*\*Priority:\*\*\s*(Critical|High|Medium|Low)/i);
         let hoursMatch = body.match(/\*\*Estimated Hours:\*\*\s*([\d,]+)/i);
-        let rewardMatch = body.match(/\*\*Token Reward:\*\*\s*([\d,]+)\s*BAPP/i);
         let categoryMatch = body.match(/\*\*Category:\*\*\s*([^\n]+)/i);
+        
+        // If no reward in title, try old format in body
+        if (!rewardMatch) {
+          rewardMatch = body.match(/\*\*Token Reward:\*\*\s*([\d,]+)\s*(?:BAPP|BCODE)/i);
+        }
         
         // Find matching PR if exists
         const matchingPR = pullRequests.find((pr: any) => 
@@ -224,7 +229,7 @@ const ContractsPage: React.FC = () => {
           githubIssueUrl: issue.html_url,
           title: issue.title,
           description: description,
-          reward: rewardMatch ? `${rewardMatch[1]} BAPP` : '2,000 BAPP',
+          reward: rewardMatch ? `${rewardMatch[1]}M $BCODE` : '2M $BCODE',
           estimatedHours: hoursMatch ? parseInt(hoursMatch[1].replace(/,/g, '')) : 8,
           priority: (priorityMatch ? priorityMatch[1] : 'Medium') as Contract['priority'],
           category: category,
@@ -254,7 +259,7 @@ const ContractsPage: React.FC = () => {
         {
           id: 'github-redirect',
           githubIssueNumber: 0,
-          githubIssueUrl: 'https://github.com/bitcoin-apps-suite/bitcoin-app/issues',
+          githubIssueUrl: 'https://github.com/bitcoin-apps-suite/bitcoin-code/issues',
           title: '📋 View Contracts on GitHub',
           description: 'Unable to load contracts from GitHub API. This may be due to rate limiting or network issues. Click below to view all available contracts directly on GitHub.',
           priority: 'Low' as const,
