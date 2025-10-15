@@ -88,7 +88,7 @@ const ContractsPage: React.FC = () => {
   const fetchContracts = async () => {
     try {
       // Fetch GitHub issues from bitcoin-code repository
-      const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/issues?state=open&per_page=100');
+      const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/issues?state=all&per_page=100');
       
       // Check for errors
       if (!response.ok) {
@@ -116,16 +116,11 @@ const ContractsPage: React.FC = () => {
       const mappedContracts: Contract[] = issues.map((issue: any) => {
         const body = issue.body || '';
         
-        // Handle both old and new format - first try the new 💰 format from issue titles
-        let rewardMatch = issue.title.match(/💰\s*([\d,]+)M?\s*-/);
+        // Handle both old and new format
         let priorityMatch = body.match(/\*\*Priority:\*\*\s*(Critical|High|Medium|Low)/i);
         let hoursMatch = body.match(/\*\*Estimated Hours:\*\*\s*([\d,]+)/i);
+        let rewardMatch = body.match(/\*\*Token Reward:\*\*\s*([\d,]+)\s*BCODE/i);
         let categoryMatch = body.match(/\*\*Category:\*\*\s*([^\n]+)/i);
-        
-        // If no reward in title, try old format in body
-        if (!rewardMatch) {
-          rewardMatch = body.match(/\*\*Token Reward:\*\*\s*([\d,]+)\s*(?:BAPP|BCODE)/i);
-        }
         
         // Find matching PR if exists
         const matchingPR = pullRequests.find((pr: any) => 
@@ -167,6 +162,14 @@ const ContractsPage: React.FC = () => {
           }
         }
         
+        // Also try parsing from title for new format
+        if (!rewardMatch) {
+          const titleRewardMatch = issue.title.match(/💰\s*([\d,]+)M?\s*-/);
+          if (titleRewardMatch) {
+            rewardMatch = titleRewardMatch;
+          }
+        }
+        
         // Extract deliverables - handle both formats
         const deliverables: string[] = [];
         const criteriaMatch = body.match(/##\s*(?:✅\s*)?Acceptance Criteria\s*\n([\s\S]*?)(?=##|$)/i);
@@ -197,13 +200,13 @@ const ContractsPage: React.FC = () => {
         const titleLower = issue.title.toLowerCase();
         const bodyLower = body.toLowerCase();
         
-        // Check for code-related keywords  
-        if (titleLower.includes('code') || titleLower.includes('implementation') || 
-            titleLower.includes('algorithm') || titleLower.includes('function') ||
-            titleLower.includes('component') || titleLower.includes('library') ||
-            titleLower.includes('framework') || titleLower.includes('api') ||
-            bodyLower.includes('coding') || bodyLower.includes('programming') ||
-            bodyLower.includes('development') || bodyLower.includes('implementation')) {
+        // Check for code-related keywords vs developer tasks
+        if (titleLower.includes('algorithm') || titleLower.includes('function') || 
+            titleLower.includes('optimize') || titleLower.includes('refactor') ||
+            titleLower.includes('implement') || titleLower.includes('fix bug') ||
+            titleLower.includes('feature') || titleLower.includes('enhancement') ||
+            bodyLower.includes('code implementation') || bodyLower.includes('programming') ||
+            bodyLower.includes('software development') || bodyLower.includes('coding task')) {
           category = 'code';
         }
         
@@ -214,7 +217,7 @@ const ContractsPage: React.FC = () => {
           ).join(' ').toLowerCase();
           
           if (labelNames.includes('code') || labelNames.includes('implementation') ||
-              labelNames.includes('algorithm') || labelNames.includes('api')) {
+              labelNames.includes('algorithm') || labelNames.includes('feature')) {
             category = 'code';
           }
         }
@@ -229,7 +232,7 @@ const ContractsPage: React.FC = () => {
           githubIssueUrl: issue.html_url,
           title: issue.title,
           description: description,
-          reward: rewardMatch ? `${rewardMatch[1]}M $BCODE` : '2M $BCODE',
+          reward: rewardMatch ? `${rewardMatch[1]} BCODE` : '2,000 BCODE',
           estimatedHours: hoursMatch ? parseInt(hoursMatch[1].replace(/,/g, '')) : 8,
           priority: (priorityMatch ? priorityMatch[1] : 'Medium') as Contract['priority'],
           category: category,
@@ -339,17 +342,29 @@ const ContractsPage: React.FC = () => {
     return 'Less than 1 hour';
   };
 
+  const handleGitHubAuth = () => {
+    alert('GitHub authentication will be implemented in the next update. For now, please visit the contract on GitHub to claim it.');
+  };
+
+  const handleGoogleAuth = () => {
+    alert('Google authentication will be implemented in the next update.');
+  };
+
+  const handleHandCashAuth = () => {
+    handcashService.login();
+  };
+
   return (
     <div className="App">
       <div className={`contracts-page ${!isMobile && !devSidebarCollapsed ? 'with-sidebar-expanded' : ''} ${!isMobile && devSidebarCollapsed ? 'with-sidebar-collapsed' : ''}`}>
         <div className="contracts-container">
           {/* Hero Section */}
           <section className="contracts-hero">
-            <h1>Bitcoin Code <span style={{color: '#ffffff'}}>Contracts</span></h1>
+            <h1><span style={{color: '#22c55e'}}>Bitcoin Code</span> <span style={{color: '#ffffff'}}>Contracts</span></h1>
             <p className="contracts-tagline">
               {activeTab === 'developer' 
-                ? 'Claim contracts, deliver code, earn $BCODE tokens'
-                : 'Code algorithms, fulfill contracts, get paid in $BCODE'}
+                ? 'Claim contracts, deliver code, earn BCODE tokens'
+                : 'Code algorithms, fulfill contracts, get paid in BCODE'}
             </p>
             <div className="contracts-badge">CONTRACTS</div>
           </section>
@@ -414,7 +429,7 @@ const ContractsPage: React.FC = () => {
               <p className="contract-description">{contract.description}</p>
               
               <div className="contract-meta">
-                <span className="contract-priority priority-{contract.priority.toLowerCase()}">
+                <span className={`contract-priority priority-${contract.priority.toLowerCase()}`}>
                   {contract.priority}
                 </span>
                 <span className="contract-reward">{contract.reward}</span>
@@ -459,7 +474,7 @@ const ContractsPage: React.FC = () => {
             <h2>{selectedContract.title}</h2>
             
             <div className="contract-modal-meta">
-              <span className="priority-badge priority-{selectedContract.priority.toLowerCase()}">
+              <span className={`priority-badge priority-${selectedContract.priority.toLowerCase()}`}>
                 {selectedContract.priority} Priority
               </span>
               <span className="reward-badge">{selectedContract.reward}</span>
@@ -492,13 +507,13 @@ const ContractsPage: React.FC = () => {
             <div className="contract-modal-section">
               <h3>Sign in to Claim</h3>
               <div className="auth-options">
-                <button className="auth-button github-auth">
+                <button className="auth-button github-auth" onClick={handleGitHubAuth}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
                   Sign in with GitHub
                 </button>
-                <button className="auth-button google-auth">
+                <button className="auth-button google-auth" onClick={handleGoogleAuth}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -507,7 +522,7 @@ const ContractsPage: React.FC = () => {
                   </svg>
                   Sign in with Google
                 </button>
-                <button className="auth-button handcash-auth">
+                <button className="auth-button handcash-auth" onClick={handleHandCashAuth}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
                   </svg>

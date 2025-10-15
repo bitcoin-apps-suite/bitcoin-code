@@ -132,7 +132,7 @@
 }
 
 .contracts-tabs button:hover {
-  border-color: rgba(255, 107, 53, 0.5);
+  border-color: rgba(34, 197, 94, 0.5);
   color: #22c55e;
 }
 
@@ -195,7 +195,7 @@
 .contract-card:hover {
   transform: translateY(-4px);
   border-color: #22c55e;
-  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.1);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
 }
 
 .contract-header {
@@ -315,8 +315,8 @@
 
 .skill-tag {
   padding: 4px 10px;
-  background: rgba(255, 107, 53, 0.1);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 16px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
@@ -499,8 +499,8 @@
 }
 
 .contract-summary {
-  background: rgba(255, 107, 53, 0.05);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
@@ -572,7 +572,7 @@
 
 .submit-claim-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
 }
 
 .submit-claim-button:active {
@@ -679,7 +679,7 @@
 }
 
 .priority-badge {
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.2);
   color: #22c55e;
   border: 1px solid #22c55e;
 }
@@ -723,8 +723,8 @@
 
 .skill-badge {
   padding: 4px 12px;
-  background: rgba(255, 107, 53, 0.1);
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
   border-radius: 16px;
   font-size: 13px;
   color: #22c55e;
@@ -787,7 +787,7 @@
 }
 
 .close-button:hover {
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.2);
   border-color: #22c55e;
   color: #22c55e;
   transform: rotate(90deg);
@@ -860,12 +860,12 @@
 .form-group select:focus {
   outline: none;
   border-color: #22c55e;
-  background: rgba(255, 107, 53, 0.05);
+  background: rgba(34, 197, 94, 0.05);
 }
 
 .claim-terms {
-  background: rgba(255, 107, 53, 0.05);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
@@ -910,7 +910,7 @@
 
 .create-contract-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
 }
 
 /* Author Contract Styles */
@@ -948,8 +948,8 @@
 
 .topic-tag {
   padding: 4px 10px;
-  background: rgba(255, 107, 53, 0.1);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 20px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
@@ -1104,8 +1104,8 @@
 
 .topic-badge {
   padding: 6px 12px;
-  background: rgba(255, 107, 53, 0.1);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   color: #22c55e;
   border-radius: 20px;
   font-size: 13px;
@@ -1132,7 +1132,7 @@
 
 .primary-cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
 }
 
 .back-navigation {
@@ -1158,8 +1158,8 @@
 .submissions-section {
   margin: 40px 0;
   padding: 30px;
-  background: rgba(255, 107, 53, 0.05);
-  border: 1px solid rgba(255, 107, 53, 0.1);
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.1);
   border-radius: 12px;
 }
 
@@ -1185,8 +1185,8 @@
 }
 
 .submission-card:hover {
-  border-color: rgba(255, 107, 53, 0.3);
-  background: rgba(255, 107, 53, 0.05);
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
 }
 
 .submission-card h3 {
