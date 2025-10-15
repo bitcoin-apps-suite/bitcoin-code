@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import UnifiedAuth from './UnifiedAuth';
+import { HandCashService } from '../services/HandCashService';
 
 interface MenuItem {
   label?: string;
@@ -20,6 +22,7 @@ interface TaskbarProps {
   onNewProject?: () => void;
   onSaveProject?: () => void;
   onOpenLibraryModal?: () => void;
+  onWalletConnect?: (walletType: string, userInfo: any) => void;
 }
 
 const CleanTaskbar: React.FC<TaskbarProps> = ({ 
@@ -28,13 +31,23 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
   onLogout,
   onNewProject,
   onSaveProject,
-  onOpenLibraryModal
+  onOpenLibraryModal,
+  onWalletConnect
 }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showBitcoinSuite, setShowBitcoinSuite] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [googleUser, setGoogleUser] = useState<any>(null);
+  const [handCashService, setHandCashService] = useState<HandCashService | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Initialize HandCashService only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHandCashService(new HandCashService());
+    }
+  }, []);
 
   const menus: MenuData[] = [
     {
@@ -103,7 +116,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
     {
       label: 'Blockchain',
       items: [
-        { label: 'Connect Wallet', action: () => console.log('Connect wallet') },
+        { label: 'Connect Wallet', action: () => console.log('Use connection button in taskbar') },
         { label: 'Deploy Contract', action: () => console.log('Deploy contract') },
         { divider: true },
         { label: 'Create NFT', action: () => console.log('Create NFT') },
@@ -193,6 +206,21 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const handleHandCashLogin = () => {
+    if (handCashService) {
+      handCashService.login();
+    }
+  };
+
+  const handleHandCashLogout = () => {
+    if (handCashService) {
+      handCashService.logout();
+    }
+    if (onLogout) {
+      onLogout();
+    }
+  };
 
   return (
     <div 
@@ -680,18 +708,24 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
         </div>
       )}
       
-      {/* Right side - Status */}
+      {/* Right side - Connection Status */}
       <div style={{
         marginLeft: isMobile ? '0' : 'auto',
         display: 'flex',
         alignItems: 'center',
-        gap: '16px',
-        paddingRight: '16px',
-        fontSize: '12px',
-        color: 'rgba(255, 255, 255, 0.8)'
+        paddingRight: '16px'
       }}>
-        <span>{isAuthenticated && currentUser ? (currentUser.handle || 'Connected') : 'Not Connected'}</span>
-        <span style={{ color: isAuthenticated ? '#00ff88' : '#ff4444' }}>●</span>
+        {handCashService && (
+          <UnifiedAuth
+            googleUser={googleUser}
+            setGoogleUser={setGoogleUser}
+            isHandCashAuthenticated={isAuthenticated}
+            currentHandCashUser={currentUser}
+            handcashService={handCashService}
+            onHandCashLogin={handleHandCashLogin}
+            onHandCashLogout={handleHandCashLogout}
+          />
+        )}
       </div>
     </div>
   );

@@ -106,8 +106,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({
       // Simulate a delay as if OAuth is happening
       setTimeout(() => {
         const mockTwitterUser = {
-          username: 'bitcoin_app',
-          name: 'Bitcoin App',
+          username: 'bitcoin_writer',
+          name: 'Bitcoin Writer',
           profile_image_url: 'https://pbs.twimg.com/profile_images/1844449428127928320/C0dTi8M4_400x400.jpg'
         };
         setTwitterUser(mockTwitterUser);
@@ -135,7 +135,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({
         
         <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)}>
               <div className="auth-modal-header">
-                <h2>Connect to Bitcoin App</h2>
+                <h2>Connect to Bitcoin Writer</h2>
                 <button className="modal-close" onClick={() => setShowAuthModal(false)}>×</button>
               </div>
               
@@ -196,7 +196,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({
                 <div className="auth-benefits">
                   <h3>Why connect?</h3>
                   <p className="simple-explanation">
-                    Bitcoin App allows you to write documents directly on the blockchain, encrypt, timelock, publish, charge for access, post to Twitter and Substack, and backup to Google Drive or send via Gmail. Connect your HandCash wallet to receive payments, tokenize your documents and issue dividend bearing shares in the revenue they generate that can be independently traded on decentralized exchanges. Subscribe to top-up with monthly bitcoin straight to your HandCash wallet or directly to your Bitcoin App wallet.
+                    Bitcoin Writer allows you to write documents directly on the blockchain, encrypt, timelock, publish, charge for access, post to Twitter and Substack, and backup to Google Drive or send via Gmail. Connect your HandCash wallet to receive payments, tokenize your documents and issue dividend bearing shares in the revenue they generate that can be independently traded on decentralized exchanges. Subscribe to top-up with monthly bitcoin straight to your HandCash wallet or directly to your Bitcoin Writer wallet.
                   </p>
                   
                   {!process.env.REACT_APP_GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID === 'YOUR_GOOGLE_CLIENT_ID_HERE' ? (
@@ -316,8 +316,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({
           )}
         </div>
         <span>
-          {hasFullAuth ? 'Manage Connections' : 
-           hasGoogle || hasHandCash || hasTwitter ? 'Add More' : 'Sign In'}
+          {hasFullAuth ? 'Connections' : 
+           hasGoogle || hasHandCash || hasTwitter ? 'Connections' : 'Sign In'}
         </span>
       </button>
 
@@ -437,7 +437,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({
               <div className="auth-benefits">
                 <h3>Why connect?</h3>
                 <p className="simple-explanation">
-                  Bitcoin App allows you to write documents directly on the blockchain, encrypt, timelock, publish, charge for access, post to Twitter and Substack, and backup to Google Drive or send via Gmail. Connect your HandCash wallet to receive payments, tokenize your documents and issue dividend bearing shares in the revenue they generate that can be independently traded on decentralized exchanges. Subscribe to top-up with monthly bitcoin straight to your HandCash wallet or directly to your Bitcoin App wallet.
+                  Bitcoin Writer allows you to write documents directly on the blockchain, encrypt, timelock, publish, charge for access, post to Twitter and Substack, and backup to Google Drive or send via Gmail. Connect your HandCash wallet to receive payments, tokenize your documents and issue dividend bearing shares in the revenue they generate that can be independently traded on decentralized exchanges. Subscribe to top-up with monthly bitcoin straight to your HandCash wallet or directly to your Bitcoin Writer wallet.
                 </p>
                 
                 <div className="topup-buttons-section">

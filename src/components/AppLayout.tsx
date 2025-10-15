@@ -20,6 +20,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const [showTokenDashboard, setShowTokenDashboard] = useState(false)
   const [dockStyle, setDockStyle] = useState<'large' | 'minimal'>('large')
   const [isTickerCollapsed, setIsTickerCollapsed] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState<any>(null)
 
   useEffect(() => {
     const savedDockStyle = localStorage.getItem('dockStyle') as 'large' | 'minimal' | null

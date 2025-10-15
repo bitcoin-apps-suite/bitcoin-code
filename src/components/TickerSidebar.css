@@ -5,9 +5,9 @@
   border-left: 2px solid #22c55e;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 72px); /* Account for taskbar height (40px POC + 32px taskbar) */
   position: fixed;
-  top: 0; /* Start from top */
+  top: 72px; /* Start below taskbar */
   right: 0;
   z-index: 100; /* Higher z-index to ensure visibility */
   padding-right: 10px;
@@ -60,6 +60,11 @@
 .ticker-sidebar.collapsed .ticker-header {
   justify-content: center;
   padding: 12px 8px;
+}
+
+.ticker-sidebar.collapsed .ticker-header-controls {
+  width: 100%;
+  justify-content: center;
 }
 
 .ticker-header h3 {

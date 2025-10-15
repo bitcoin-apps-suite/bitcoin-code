@@ -20,6 +20,8 @@ export default function HomePage() {
   const [showTokenDashboard, setShowTokenDashboard] = useState(false)
   const [dockStyle, setDockStyle] = useState<'large' | 'minimal'>('large')
   const [isTickerCollapsed, setIsTickerCollapsed] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState<any>(null)
 
   useEffect(() => {
     const savedDockStyle = localStorage.getItem('dockStyle') as 'large' | 'minimal' | null
@@ -43,6 +45,18 @@ export default function HomePage() {
       window.removeEventListener('tickerToggled', handleTickerToggle as EventListener)
     }
   }, [])
+
+  const handleWalletConnect = (walletType: string, userInfo: any) => {
+    setIsAuthenticated(true)
+    setCurrentUser(userInfo)
+    console.log('Wallet connected:', walletType, userInfo)
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    setCurrentUser(null)
+    console.log('Wallet disconnected')
+  }
 
   const LandingPage = () => (
     <div className="homepage">
@@ -270,12 +284,13 @@ app.createTransaction({
     <div className="App">
       <ProofOfConceptBar />
       <CleanTaskbar 
-        isAuthenticated={false}
-        currentUser={null}
-        onLogout={() => console.log('Logout')}
+        isAuthenticated={isAuthenticated}
+        currentUser={currentUser}
+        onLogout={handleLogout}
         onNewProject={() => console.log('New project')}
         onSaveProject={() => console.log('Save project')}
         onOpenLibraryModal={() => console.log('Open library modal')}
+        onWalletConnect={handleWalletConnect}
       />
       <div className="app-container" style={{ display: 'flex', flex: 1, position: 'relative', marginTop: '72px' }}>
         <DevSidebar onToggle={setIsDevSidebarCollapsed} />
@@ -295,7 +310,7 @@ app.createTransaction({
         </div>
       </div>
       {dockStyle === 'large' ? <Dock /> : <MinimalDock />}
-      <TickerSidebar userHandle="bitcoincoder" />
+      <TickerSidebar userHandle={currentUser?.handle || "bitcoincoder"} />
       
       {/* Modal Components */}
       <ContractWizard
