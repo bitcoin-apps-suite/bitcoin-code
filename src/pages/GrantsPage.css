@@ -70,7 +70,7 @@
 
 .grants-hero-icon {
   margin-bottom: 20px;
-  color: #FF6B35;
+  color: #22c55e;
 }
 
 .grants-hero h1 {
@@ -94,7 +94,7 @@
 .grants-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
@@ -159,7 +159,7 @@ section h2 {
 }
 
 .pillar-icon {
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
@@ -168,7 +168,7 @@ section h2 {
 .pillar h3 {
   font-size: 20px;
   font-weight: 400;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 15px;
   letter-spacing: -0.3px;
 }
@@ -214,7 +214,7 @@ section h2 {
 }
 
 .focus-area-icon {
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 15px;
   display: inline-block;
 }
@@ -245,7 +245,7 @@ section h2 {
 
 .focus-area li:before {
   content: "•";
-  color: #FF6B35;
+  color: #22c55e;
   position: absolute;
   left: 0;
 }
@@ -307,7 +307,7 @@ section h2 {
 }
 
 .category-badge {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
   padding: 4px 12px;
   border-radius: 20px;
@@ -341,7 +341,7 @@ section h2 {
 }
 
 .category-cta {
-  color: #FF6B35;
+  color: #22c55e;
   font-size: 14px;
   font-weight: 400;
   margin-top: 10px;
@@ -381,7 +381,7 @@ section h2 {
 }
 
 .impact-point-icon {
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 15px;
   display: inline-block;
 }
@@ -389,7 +389,7 @@ section h2 {
 .impact-point h4 {
   font-size: 18px;
   font-weight: 400;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 10px;
   letter-spacing: -0.3px;
 }
@@ -415,7 +415,7 @@ section h2 {
 }
 
 .cta-content > svg {
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 20px;
 }
 
@@ -456,7 +456,7 @@ section h2 {
 }
 
 .cta-button.author {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000000;
 }
 

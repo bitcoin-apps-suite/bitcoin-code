@@ -74,7 +74,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -92,7 +92,7 @@
 .author-offers-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
@@ -132,11 +132,11 @@
 .filter-button:hover {
   background: rgba(255, 107, 53, 0.05);
   border-color: rgba(255, 107, 53, 0.3);
-  color: #FF6B35;
+  color: #22c55e;
 }
 
 .filter-button.active {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
   border-color: transparent;
   font-weight: 500;
@@ -239,7 +239,7 @@
   border: 1px solid rgba(255, 107, 53, 0.2);
   border-radius: 20px;
   font-size: 12px;
-  color: #FF6B35;
+  color: #22c55e;
   font-weight: 400;
 }
 
@@ -262,7 +262,7 @@
 
 .hire-author-button {
   padding: 10px 20px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
   border: none;
   border-radius: 8px;
@@ -306,7 +306,7 @@
 
 .create-offer-button {
   padding: 12px 30px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
   border: none;
   border-radius: 8px;

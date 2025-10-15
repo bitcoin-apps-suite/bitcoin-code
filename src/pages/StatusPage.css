@@ -74,7 +74,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -284,7 +284,7 @@
 
 .metric-value {
   font-size: 14px;
-  color: #FF6B35;
+  color: #22c55e;
   font-weight: 400;
 }
 
@@ -323,7 +323,7 @@
 .metric-card h3 {
   font-size: 18px;
   font-weight: 400;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 20px;
   letter-spacing: -0.3px;
 }
@@ -339,7 +339,7 @@
 
 .chart-bar {
   width: 12%;
-  background: linear-gradient(180deg, #FF6B35, #F7931E);
+  background: linear-gradient(180deg, #22c55e, #16a34a);
   border-radius: 3px 3px 0 0;
   transition: height 0.3s ease;
 }
@@ -535,7 +535,7 @@
 }
 
 .subscribe-button.primary {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
 }
 
@@ -546,13 +546,13 @@
 
 .subscribe-button.secondary {
   border: 1px solid rgba(255, 107, 53, 0.5);
-  color: #FF6B35;
+  color: #22c55e;
   background: transparent;
 }
 
 .subscribe-button.secondary:hover {
   background: rgba(255, 107, 53, 0.1);
-  border-color: #FF6B35;
+  border-color: #22c55e;
 }
 
 /* Mobile Responsive */

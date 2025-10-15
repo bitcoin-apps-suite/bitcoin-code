@@ -74,7 +74,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -92,7 +92,7 @@
 .api-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
@@ -133,11 +133,11 @@
 
 .api-nav button:hover {
   border-color: rgba(255, 107, 53, 0.5);
-  color: #FF6B35;
+  color: #22c55e;
 }
 
 .api-nav button.active {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   border-color: transparent;
   color: #000;
 }
@@ -215,7 +215,7 @@
 .endpoint-path {
   font-family: 'SF Mono', monospace;
   font-size: 16px;
-  color: #FF6B35;
+  color: #22c55e;
   background: rgba(255, 107, 53, 0.05);
   padding: 6px 12px;
   border-radius: 6px;
@@ -313,7 +313,7 @@
 .limit-card h3 {
   font-size: 18px;
   font-weight: 400;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 20px;
   letter-spacing: -0.3px;
 }
@@ -387,11 +387,11 @@
   margin-bottom: 20px;
   font-family: 'SF Mono', monospace;
   font-size: 13px;
-  color: #FF6B35;
+  color: #22c55e;
 }
 
 .sdk-card a {
-  color: #FF6B35;
+  color: #22c55e;
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
@@ -401,7 +401,7 @@
 }
 
 .sdk-card a:hover {
-  color: #F7931E;
+  color: #16a34a;
   transform: translateX(5px);
 }
 

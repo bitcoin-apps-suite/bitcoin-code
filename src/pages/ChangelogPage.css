@@ -74,7 +74,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -92,7 +92,7 @@
 .changelog-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
@@ -144,7 +144,7 @@
 }
 
 .version-tag.major {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
 }
 
@@ -165,7 +165,7 @@
 .changes-section h3 {
   font-size: 18px;
   font-weight: 400;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 15px;
   letter-spacing: -0.3px;
 }
@@ -288,7 +288,7 @@
 }
 
 .subscribe-button.primary {
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   color: #000;
 }
 
@@ -299,13 +299,13 @@
 
 .subscribe-button.secondary {
   border: 1px solid rgba(255, 107, 53, 0.5);
-  color: #FF6B35;
+  color: #22c55e;
   background: transparent;
 }
 
 .subscribe-button.secondary:hover {
   background: rgba(255, 107, 53, 0.1);
-  border-color: #FF6B35;
+  border-color: #22c55e;
 }
 
 /* Mobile Responsive */

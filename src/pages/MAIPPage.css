@@ -41,7 +41,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  background: linear-gradient(90deg, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,11 +59,11 @@
   display: inline-block;
   padding: 8px 20px;
   background: rgba(255, 107, 53, 0.2);
-  border: 1px solid #FF6B35;
+  border: 1px solid #22c55e;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  color: #FF6B35;
+  color: #22c55e;
   letter-spacing: 1px;
 }
 
@@ -147,7 +147,7 @@
   left: 30px;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931A 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #F7931A 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -161,7 +161,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 20px;
-  color: #FF6B35;
+  color: #22c55e;
 }
 
 .process-step p {
@@ -239,7 +239,7 @@
 
 .tech-component h4 {
   font-size: 20px;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 10px;
 }
 
@@ -276,13 +276,13 @@
 .flow-item {
   padding: 25px;
   background: rgba(255, 107, 53, 0.03);
-  border-left: 4px solid #FF6B35;
+  border-left: 4px solid #22c55e;
   border-radius: 8px;
 }
 
 .flow-item h4 {
   font-size: 18px;
-  color: #FF6B35;
+  color: #22c55e;
   margin-bottom: 10px;
 }
 
@@ -333,7 +333,7 @@
 }
 
 .cta-primary {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931A 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #F7931A 100%);
   color: white;
 }
 
@@ -344,8 +344,8 @@
 
 .cta-secondary {
   background: transparent;
-  color: #FF6B35;
-  border: 2px solid #FF6B35;
+  color: #22c55e;
+  border: 2px solid #22c55e;
 }
 
 .cta-secondary:hover {
