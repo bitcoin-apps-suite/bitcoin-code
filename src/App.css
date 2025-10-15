@@ -3806,6 +3806,24 @@ main {
   transform: translateY(-2px);
 }
 
+.nav-btn {
+  padding: 0.4rem 1rem;
+  background: rgba(255, 107, 53, 0.1);
+  color: #ff6b35;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 107, 53, 0.2);
+  border-color: #ff6b35;
+  transform: translateY(-1px);
+}
+
 /* Hero Section */
 .hero-section {
   max-width: 1400px;

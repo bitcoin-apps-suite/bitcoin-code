@@ -1,0 +1,37 @@
+{
+  "name": "@bitcoin-os/dock",
+  "version": "1.0.0",
+  "description": "Universal dock components for Bitcoin OS ecosystem",
+  "main": "components/DockManager.tsx",
+  "types": "components/DockManager.tsx",
+  "files": [
+    "components/",
+    "lib/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "echo 'No build needed - React components'"
+  },
+  "keywords": [
+    "bitcoin",
+    "dock",
+    "components",
+    "react",
+    "bitcoin-os"
+  ],
+  "author": "Bitcoin OS",
+  "license": "Open BSV License",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "lucide-react": ">=0.400.0",
+    "react-icons": ">=5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitcoin-os/bitcoin-dock"
+  },
+  "homepage": "https://github.com/bitcoin-os/bitcoin-dock#readme",
+  "bugs": {
+    "url": "https://github.com/bitcoin-os/bitcoin-dock/issues"
+  }
+}

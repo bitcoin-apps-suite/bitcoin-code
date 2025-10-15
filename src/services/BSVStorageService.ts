@@ -491,6 +491,37 @@ export class BSVStorageService {
   public getAddress(): string | null {
     return this.address;
   }
+
+  // Create hash for data integrity
+  public async createHash(data: string): Promise<string> {
+    return CryptoJS.SHA256(data).toString();
+  }
+
+  // Store data on blockchain (simplified mock implementation)
+  public async storeData(data: any): Promise<string> {
+    // In production, this would create an actual BSV transaction
+    // For now, return a mock transaction hash
+    const hash = await this.createHash(JSON.stringify(data));
+    const mockTxId = `bsv-tx-${Date.now()}-${hash.substring(0, 8)}`;
+    
+    console.log(`📦 Mock BSV transaction stored: ${mockTxId}`, data);
+    return mockTxId;
+  }
+
+  // Retrieve data from blockchain (simplified mock implementation)
+  public async retrieveData(txId: string): Promise<any> {
+    // In production, this would query the BSV blockchain
+    // For now, return mock data based on transaction ID
+    console.log(`🔍 Mock BSV data retrieval for: ${txId}`);
+    
+    return {
+      txId,
+      timestamp: Date.now(),
+      verified: true,
+      contractHash: await this.createHash(`mock-contract-${txId}`),
+      data: { mock: true, retrievedAt: Date.now() }
+    };
+  }
 }
 
 export default BSVStorageService;

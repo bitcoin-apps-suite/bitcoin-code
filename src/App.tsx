@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import CodeEditor from './components/CodeEditor';
@@ -13,13 +13,36 @@ import FindDevelopersPage from './pages/maintainers/FindDevelopersPage';
 import ContributorsPage from './pages/contributors/ContributorsPage';
 import ProofOfConceptBar from './components/ProofOfConceptBar';
 import CleanTaskbar from './components/CleanTaskbar';
-import Dock from './components/Dock';
 import DevSidebar from './components/OSDevSidebar';
+import Dock from './components/Dock';
+import MinimalDock from './components/MinimalDock';
+import ContractWizard from './components/ContractWizard';
+import TokenDashboard from './components/TokenDashboard';
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react';
 
 function App() {
   const [showBuilder, setShowBuilder] = useState(true);
   const [isDevSidebarCollapsed, setIsDevSidebarCollapsed] = useState(true);
+  const [showContractWizard, setShowContractWizard] = useState(false);
+  const [showTokenDashboard, setShowTokenDashboard] = useState(false);
+  const [dockStyle, setDockStyle] = useState<'large' | 'minimal'>('large');
+
+  useEffect(() => {
+    const savedDockStyle = localStorage.getItem('dockStyle') as 'large' | 'minimal' | null;
+    if (savedDockStyle) {
+      setDockStyle(savedDockStyle);
+    }
+
+    const handleDockStyleChange = (event: CustomEvent) => {
+      setDockStyle(event.detail);
+    };
+
+    window.addEventListener('dockStyleChanged', handleDockStyleChange as EventListener);
+    
+    return () => {
+      window.removeEventListener('dockStyleChanged', handleDockStyleChange as EventListener);
+    };
+  }, []);
 
   const HomePage = () => (
     <div className="homepage">
@@ -38,6 +61,18 @@ function App() {
               onClick={() => setShowBuilder(true)}
             >
               Open Code Editor
+            </button>
+            <button 
+              className="nav-btn"
+              onClick={() => setShowTokenDashboard(true)}
+            >
+              💎 Tokens
+            </button>
+            <button 
+              className="nav-btn"
+              onClick={() => setShowContractWizard(true)}
+            >
+              📝 Contracts
             </button>
           </nav>
         </div>
@@ -280,7 +315,25 @@ app.createTransaction({
           )}
         </div>
       </div>
-      <Dock />
+      {dockStyle === 'large' ? <Dock /> : <MinimalDock />}
+      
+      {/* Modal Components */}
+      <ContractWizard
+        isOpen={showContractWizard}
+        onClose={() => setShowContractWizard(false)}
+        projectId="bitcoin-code-core"
+        onContractCreated={(contract) => {
+          console.log('Contract created:', contract);
+          setShowContractWizard(false);
+        }}
+      />
+      
+      <TokenDashboard
+        developerId="dev-001"
+        isOpen={showTokenDashboard}
+        onClose={() => setShowTokenDashboard(false)}
+      />
+      
       <footer className="global-footer">
         <div className="global-footer-content">
           <p>© 2025 The Bitcoin Corporation LTD. All rights reserved.</p>

@@ -63,7 +63,10 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "api": "node api/server.js",
-    "dev": "concurrently \"npm run api\" \"npm start\""
+    "dev": "concurrently \"npm run api\" \"npm start\"",
+    "kill:3000": "lsof -ti:3000 | xargs kill -9",
+    "kill:dev": "lsof -ti:3000 | xargs kill -9 && lsof -ti:3001 | xargs kill -9",
+    "kill:all": "for port in {3000..3010}; do lsof -ti:$port | xargs kill -9 2>/dev/null || true; done"
   },
   "eslintConfig": {
     "extends": [
