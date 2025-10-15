@@ -78,3 +78,6 @@ IMPLEMENTATION-*.md
 ROADMAP*.md
 BUSINESS*.md
 REVENUE*.md
+# Next.js
+.next/
+out/
