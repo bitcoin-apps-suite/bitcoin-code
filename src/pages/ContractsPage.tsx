@@ -13,7 +13,7 @@ interface Contract {
   estimatedHours: number;
   priority: 'Critical' | 'High' | 'Medium' | 'Low';
   status: 'available' | 'claimed' | 'in_progress' | 'submitted' | 'completed' | 'expired';
-  category: 'developer' | 'writing';
+  category: 'developer' | 'code';
   assignee?: {
     githubUsername: string;
     handcashHandle?: string;
@@ -36,7 +36,7 @@ const ContractsPage: React.FC = () => {
   const [showClaimModal, setShowClaimModal] = useState(false);
   const [handcashService] = useState(new HandCashService());
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activeTab, setActiveTab] = useState<'developer' | 'writing'>('developer');
+  const [activeTab, setActiveTab] = useState<'developer' | 'code'>('developer');
   const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(() => {
     const saved = localStorage.getItem('devSidebarCollapsed');
     return saved === 'true';
@@ -193,18 +193,18 @@ const ContractsPage: React.FC = () => {
         }
         
         // Determine category based on title, labels, and content
-        let category: 'developer' | 'writing' = 'developer';
+        let category: 'developer' | 'code' = 'developer';
         const titleLower = issue.title.toLowerCase();
         const bodyLower = body.toLowerCase();
         
-        // Check for writing-related keywords
-        if (titleLower.includes('content') || titleLower.includes('writing') || 
-            titleLower.includes('documentation') || titleLower.includes('article') ||
-            titleLower.includes('blog') || titleLower.includes('guide') ||
-            titleLower.includes('tutorial') || titleLower.includes('copy') ||
-            bodyLower.includes('content writing') || bodyLower.includes('technical writing') ||
-            bodyLower.includes('blog post') || bodyLower.includes('article writing')) {
-          category = 'writing';
+        // Check for code-related keywords  
+        if (titleLower.includes('code') || titleLower.includes('implementation') || 
+            titleLower.includes('algorithm') || titleLower.includes('function') ||
+            titleLower.includes('component') || titleLower.includes('library') ||
+            titleLower.includes('framework') || titleLower.includes('api') ||
+            bodyLower.includes('coding') || bodyLower.includes('programming') ||
+            bodyLower.includes('development') || bodyLower.includes('implementation')) {
+          category = 'code';
         }
         
         // Check labels if available
@@ -213,9 +213,9 @@ const ContractsPage: React.FC = () => {
             typeof label === 'string' ? label : label.name
           ).join(' ').toLowerCase();
           
-          if (labelNames.includes('writing') || labelNames.includes('content') ||
-              labelNames.includes('documentation') || labelNames.includes('blog')) {
-            category = 'writing';
+          if (labelNames.includes('code') || labelNames.includes('implementation') ||
+              labelNames.includes('algorithm') || labelNames.includes('api')) {
+            category = 'code';
           }
         }
         
@@ -345,11 +345,11 @@ const ContractsPage: React.FC = () => {
         <div className="contracts-container">
           {/* Hero Section */}
           <section className="contracts-hero">
-            <h1>Bitcoin App <span style={{color: '#ffffff'}}>Contracts</span></h1>
+            <h1>Bitcoin Code <span style={{color: '#ffffff'}}>Contracts</span></h1>
             <p className="contracts-tagline">
               {activeTab === 'developer' 
                 ? 'Claim contracts, deliver code, earn $BCODE tokens'
-                : 'Create content, fulfill contracts, get paid in BAPP'}
+                : 'Code algorithms, fulfill contracts, get paid in $BCODE'}
             </p>
             <div className="contracts-badge">CONTRACTS</div>
           </section>
@@ -364,10 +364,10 @@ const ContractsPage: React.FC = () => {
                 Developer Contracts
               </button>
               <button 
-                className={activeTab === 'writing' ? 'active' : ''}
-                onClick={() => setActiveTab('writing')}
+                className={activeTab === 'code' ? 'active' : ''}
+                onClick={() => setActiveTab('code')}
               >
-                Writing Contracts
+                Code Contracts
               </button>
             </div>
           </section>
