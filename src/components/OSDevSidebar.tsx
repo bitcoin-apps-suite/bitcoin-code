@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { usePathname } from 'next/navigation'
 import { 
   ChevronLeft,
   ChevronRight,
@@ -32,8 +32,7 @@ interface DevSidebarProps {
 }
 
 export default function DevSidebar({ onToggle }: DevSidebarProps) {
-  const location = useLocation()
-  const pathname = location.pathname
+  const pathname = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('devSidebarCollapsed')

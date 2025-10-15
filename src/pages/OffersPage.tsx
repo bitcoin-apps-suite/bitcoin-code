@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import './OffersPage.css';
 import Footer from '../components/Footer';
 
@@ -20,7 +20,7 @@ interface PublisherOffer {
 }
 
 const OffersPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(() => {
     const saved = localStorage.getItem('devSidebarCollapsed');
     return saved === 'true';
@@ -183,7 +183,7 @@ const OffersPage: React.FC = () => {
           {/* Author CTA */}
           <div className="publisher-cta-compact">
             <span className="cta-text">Want to offer your writing services?</span>
-            <button className="commission-button-compact" onClick={() => navigate('/author/offer')}>
+            <button className="commission-button-compact" onClick={() => router.push('/author/offer')}>
               Create Your Profile →
             </button>
           </div>

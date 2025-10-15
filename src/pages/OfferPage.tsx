@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import './OfferPage.css';
 import Footer from '../components/Footer';
 
 const OfferPage: React.FC = () => {
-  const location = useLocation();
-  const isDeveloper = location.pathname.includes('/developer/');
-  const isAuthor = location.pathname.includes('/author/');
+  const pathname = usePathname();
+  const isDeveloper = pathname.includes('/developer/');
+  const isAuthor = pathname.includes('/author/');
   const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(() => {
     const saved = localStorage.getItem('devSidebarCollapsed');
     return saved === 'true';

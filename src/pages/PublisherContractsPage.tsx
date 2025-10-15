@@ -1,15 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 // This page has been replaced by PublisherOfferPage
 // Keeping this file to avoid breaking imports
 const PublisherContractsPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   
   React.useEffect(() => {
     // Redirect to the new page
-    navigate('/publisher/offer');
-  }, [navigate]);
+    router.push('/publisher/offer');
+  }, [router]);
   
   return <div>Redirecting...</div>;
 };

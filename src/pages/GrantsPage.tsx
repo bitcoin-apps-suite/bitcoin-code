@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Flower2, DollarSign, Cpu, GraduationCap, Users, Wrench, Zap } from 'lucide-react';
 import './GrantsPage.css';
 import Footer from '../components/Footer';
