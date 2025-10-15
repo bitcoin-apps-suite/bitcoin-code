@@ -10,6 +10,7 @@ import Dock from '../src/components/Dock'
 import MinimalDock from '../src/components/MinimalDock'
 import ContractWizard from '../src/components/ContractWizard'
 import TokenDashboard from '../src/components/TokenDashboard'
+import TickerSidebar from '../src/components/TickerSidebar'
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react'
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
   const [showContractWizard, setShowContractWizard] = useState(false)
   const [showTokenDashboard, setShowTokenDashboard] = useState(false)
   const [dockStyle, setDockStyle] = useState<'large' | 'minimal'>('large')
+  const [isTickerCollapsed, setIsTickerCollapsed] = useState(false)
 
   useEffect(() => {
     const savedDockStyle = localStorage.getItem('dockStyle') as 'large' | 'minimal' | null
@@ -29,10 +31,16 @@ export default function HomePage() {
       setDockStyle(event.detail)
     }
 
+    const handleTickerToggle = (event: CustomEvent) => {
+      setIsTickerCollapsed(event.detail)
+    }
+
     window.addEventListener('dockStyleChanged', handleDockStyleChange as EventListener)
+    window.addEventListener('tickerToggled', handleTickerToggle as EventListener)
     
     return () => {
       window.removeEventListener('dockStyleChanged', handleDockStyleChange as EventListener)
+      window.removeEventListener('tickerToggled', handleTickerToggle as EventListener)
     }
   }, [])
 
@@ -276,7 +284,8 @@ app.createTransaction({
           display: 'flex', 
           flexDirection: 'column',
           marginLeft: isDevSidebarCollapsed ? '60px' : '260px',
-          transition: 'margin-left 0.3s ease'
+          marginRight: isTickerCollapsed ? '60px' : '280px',
+          transition: 'margin-left 0.3s ease, margin-right 0.3s ease'
         }}>
           {showBuilder ? (
             <CodeEditor />
@@ -286,6 +295,7 @@ app.createTransaction({
         </div>
       </div>
       {dockStyle === 'large' ? <Dock /> : <MinimalDock />}
+      <TickerSidebar userHandle="bitcoincoder" />
       
       {/* Modal Components */}
       <ContractWizard
