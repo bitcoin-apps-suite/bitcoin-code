@@ -21,7 +21,10 @@ import ContractWizard from './components/ContractWizard';
 import TokenDashboard from './components/TokenDashboard';
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react';
 
+import { useCompactShell } from './mobile/shell';
+
 function App() {
+  const hideShell = useCompactShell();
   const [showBuilder, setShowBuilder] = useState(true);
   const [isDevSidebarCollapsed, setIsDevSidebarCollapsed] = useState(true);
   const [showContractWizard, setShowContractWizard] = useState(false);
@@ -279,12 +282,12 @@ app.createTransaction({
         onOpenLibraryModal={() => console.log('Open library modal')}
       />
       <div className="app-container" style={{ display: 'flex', flex: 1, position: 'relative', marginTop: '72px' }}>
-        <DevSidebar onToggle={setIsDevSidebarCollapsed} />
+        {!hideShell && <DevSidebar onToggle={setIsDevSidebarCollapsed} />}
         <div style={{ 
           flex: 1, 
           display: 'flex', 
           flexDirection: 'column',
-          marginLeft: isDevSidebarCollapsed ? '60px' : '260px',
+          marginLeft: hideShell ? 0 : isDevSidebarCollapsed ? '60px' : '260px',
           transition: 'margin-left 0.3s ease'
         }}>
           {showBuilder ? (
@@ -318,7 +321,7 @@ app.createTransaction({
           )}
         </div>
       </div>
-      {dockStyle === 'large' ? <Dock /> : <MinimalDock />}
+      {!hideShell && (dockStyle === 'large' ? <Dock /> : <MinimalDock />)}
       
       {/* Modal Components */}
       <ContractWizard
