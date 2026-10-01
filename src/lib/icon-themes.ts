@@ -1,20 +1,15 @@
 // Lucide Icons (existing)
-import { 
-  Wallet, 
-  Mail, 
-  Music, 
-  FileText, 
-  HardDrive, 
-  Globe, 
-  Terminal, 
-  Settings, 
-  Calendar, 
-  Search, 
-  LineChart, 
-  Briefcase, 
-  Table, 
-  Share2,
-  DollarSign,
+import {
+  Wallet,
+  Mail,
+  Music,
+  FileText,
+  HardDrive,
+  Globe,
+  Calendar,
+  Search,
+  Briefcase,
+  Table,
   Store,
   Code2,
   TrendingUp,
@@ -35,22 +30,18 @@ import {
 } from 'lucide-react'
 
 // React Icons (Material Design)
-import { 
+import {
   MdAccountBalanceWallet,
   MdEmail,
   MdLibraryMusic,
   MdDescription,
   MdStorage,
   MdLanguage,
-  MdTerminal,
-  MdSettings,
   MdCalendarToday,
   MdSearch,
   MdTrendingUp,
   MdWork,
   MdTableChart,
-  MdShare,
-  MdAttachMoney,
   MdStore,
   MdCode,
   MdShowChart,
@@ -70,7 +61,7 @@ import {
 } from 'react-icons/md'
 
 // Import the complete mappings
-import { getCompleteThemedIcon, completeIconMappings } from './icon-mappings-complete'
+import { getCompleteThemedIcon } from './icon-mappings-complete'
 
 export interface IconMapping {
   lucide: any

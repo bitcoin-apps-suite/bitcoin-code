@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Editor, { OnMount, BeforeMount } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 
@@ -73,10 +73,10 @@ const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: [
               'const transaction = {',
-              '  to: "${1:recipient}",',
-              '  amount: ${2:0.001},',
-              '  data: "${3:metadata}",',
-              '  fee: ${4:0.0001}',
+              `  to: "\${1:recipient}",`,
+              `  amount: \${2:0.001},`,
+              `  data: "\${3:metadata}",`,
+              `  fee: \${4:0.0001}`,
               '};'
             ].join('\n'),
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
@@ -88,9 +88,9 @@ const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: [
               'const wallet = new BitcoinWallet({',
-              '  network: "${1:mainnet}",',
-              '  type: "${2:HD}",',
-              '  seed: "${3:your-seed-phrase}"',
+              `  network: "\${1:mainnet}",`,
+              `  type: "\${2:HD}",`,
+              `  seed: "\${3:your-seed-phrase}"`,
               '});'
             ].join('\n'),
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
@@ -102,9 +102,9 @@ const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: [
               'const contract = new SmartContract({',
-              '  script: `${1:// Your Bitcoin script here}`,',
-              '  inputs: [${2:inputs}],',
-              '  outputs: [${3:outputs}]',
+              `  script: \`\${1:// Your Bitcoin script here}\`,`,
+              `  inputs: [\${2:inputs}],`,
+              `  outputs: [\${3:outputs}]`,
               '});'
             ].join('\n'),
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,

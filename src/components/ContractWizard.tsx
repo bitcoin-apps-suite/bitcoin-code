@@ -5,14 +5,13 @@
  * This is where developers join the tokenized ecosystem!
  */
 
-import React, { useState, useEffect } from 'react';
-import { 
-  FileText, 
-  Coins, 
-  Shield, 
-  Clock, 
-  Star, 
-  Globe,
+import React, { useState } from 'react';
+import {
+  FileText,
+  Coins,
+  Shield,
+  Clock,
+  Star,
   Zap,
   CheckCircle,
   AlertCircle,
@@ -25,7 +24,6 @@ import {
   Target
 } from 'lucide-react';
 import { DeveloperContract, developerContractService } from '../services/DeveloperContractService';
-import { tokenAllocationManager } from '../services/TokenAllocationManager';
 import './ContractWizard.css';
 
 interface ContractWizardProps {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import CodeEditor from './components/CodeEditor';
 import CodeExchange from './components/CodeExchange';
@@ -21,7 +21,23 @@ import ContractWizard from './components/ContractWizard';
 import TokenDashboard from './components/TokenDashboard';
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react';
 
+import { useCompactShell } from './mobile/shell';
+import { getStoredCWIUser, CWIUser } from './mobile/cwi';
+import MobileApp from './mobile/MobileApp';
+import { HandCashService } from './services/HandCashService';
+
 function App() {
+  const hideShell = useCompactShell(); // mobile width or inside bWallet
+  const location = useLocation();
+  const mobileHome = hideShell && location.pathname === '/';
+  // bWallet (BRC-100) session: only the public identity key is kept.
+  const [mobileUser, setMobileUser] = useState<CWIUser | null>(() => getStoredCWIUser());
+  const handleMobileLogin = useCallback((u: CWIUser) => setMobileUser(u), []);
+  const handleMobileRequestLogin = useCallback(() => { new HandCashService().login(); }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('bw-mobile-app', mobileHome);
+  }, [mobileHome]);
   const [showBuilder, setShowBuilder] = useState(true);
   const [isDevSidebarCollapsed, setIsDevSidebarCollapsed] = useState(true);
   const [showContractWizard, setShowContractWizard] = useState(false);
@@ -267,24 +283,35 @@ app.createTransaction({
     </div>
   );
 
+  if (mobileHome) {
+    return (
+      <MobileApp
+        appName="bCode"
+        user={mobileUser}
+        onLogin={handleMobileLogin}
+        onRequestLogin={handleMobileRequestLogin}
+      />
+    );
+  }
+
   return (
     <div className="App">
-      <ProofOfConceptBar />
-      <CleanTaskbar 
+      {!hideShell && <ProofOfConceptBar />}
+      {!hideShell && <CleanTaskbar 
         isAuthenticated={false}
         currentUser={null}
         onLogout={() => console.log('Logout')}
         onNewProject={() => console.log('New project')}
         onSaveProject={() => console.log('Save project')}
         onOpenLibraryModal={() => console.log('Open library modal')}
-      />
-      <div className="app-container" style={{ display: 'flex', flex: 1, position: 'relative', marginTop: '72px' }}>
-        <DevSidebar onToggle={setIsDevSidebarCollapsed} />
+      />}
+      <div className="app-container" style={{ display: 'flex', flex: 1, position: 'relative', marginTop: hideShell ? 0 : '72px' }}>
+        {!hideShell && <DevSidebar onToggle={setIsDevSidebarCollapsed} />}
         <div style={{ 
           flex: 1, 
           display: 'flex', 
           flexDirection: 'column',
-          marginLeft: isDevSidebarCollapsed ? '60px' : '260px',
+          marginLeft: hideShell ? 0 : isDevSidebarCollapsed ? '60px' : '260px',
           transition: 'margin-left 0.3s ease'
         }}>
           {showBuilder ? (
@@ -318,7 +345,7 @@ app.createTransaction({
           )}
         </div>
       </div>
-      {dockStyle === 'large' ? <Dock /> : <MinimalDock />}
+      {!hideShell && (dockStyle === 'large' ? <Dock /> : <MinimalDock />)}
       
       {/* Modal Components */}
       <ContractWizard
@@ -337,11 +364,13 @@ app.createTransaction({
         onClose={() => setShowTokenDashboard(false)}
       />
       
-      <footer className="global-footer">
-        <div className="global-footer-content">
-          <p>© 2025 The Bitcoin Corporation LTD. All rights reserved.</p>
-        </div>
-      </footer>
+      {!hideShell && (
+        <footer className="global-footer">
+          <div className="global-footer-content">
+            <p>© 2025 The Bitcoin Corporation LTD. All rights reserved.</p>
+          </div>
+        </footer>
+      )}
     </div>
   );
 }
