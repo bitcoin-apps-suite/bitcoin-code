@@ -6,7 +6,6 @@
 
 /* 1. No Bitcoin OS dock, no proof-of-concept banner, no dev sidebar */
 html.bw-compact .poc-banner,
-html.bw-compact .poc-bar,
 html.bw-compact .minimal-dock,
 html.bw-compact .minimal-dock-container,
 html.bw-compact .bitcoin-dock,
@@ -16,7 +15,6 @@ html.bw-compact .dev-sidebar {
 /* Same, without JS (first paint on phones) */
 @media (max-width: 768px) {
   .poc-banner,
-  .poc-bar,
   .minimal-dock,
   .minimal-dock-container,
   .bitcoin-dock,
@@ -102,9 +100,4 @@ html.bw-compact .claude-chat-button {
   right: 12px !important;
   width: 48px !important;
   height: 48px !important;
-}
-
-/* Banner offset: taskbars sat at top: 40px below the (now hidden) PoC bar */
-html.bw-compact .taskbar {
-  top: 0 !important;
 }

@@ -5,10 +5,13 @@
  * Integrates with DeveloperContractService and TokenAllocationManager
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './TokenDashboard.css';
 import { developerContractService } from '../services/DeveloperContractService';
 import { tokenAllocationManager } from '../services/TokenAllocationManager';
+
+// Mock BCODE token price - in production this would come from an API
+const BCODE_PRICE_USD = 0.0034;
 
 interface TokenDashboardProps {
   developerId: string;
@@ -36,16 +39,9 @@ const TokenDashboard: React.FC<TokenDashboardProps> = ({ developerId, isOpen, on
   const [activeTab, setActiveTab] = useState<'overview' | 'allocations' | 'contracts' | 'analytics'>('overview');
   const [loading, setLoading] = useState(true);
 
-  // Mock BCODE token price - in production this would come from an API
-  const BCODE_PRICE_USD = 0.0034;
 
-  useEffect(() => {
-    if (isOpen && developerId) {
-      loadDeveloperStats();
-    }
-  }, [isOpen, developerId]);
 
-  const loadDeveloperStats = async () => {
+  const loadDeveloperStats = useCallback(async () => {
     setLoading(true);
     try {
       // Get performance data
@@ -89,7 +85,13 @@ const TokenDashboard: React.FC<TokenDashboardProps> = ({ developerId, isOpen, on
     } finally {
       setLoading(false);
     }
-  };
+  }, [developerId]);
+
+  useEffect(() => {
+    if (isOpen && developerId) {
+      loadDeveloperStats();
+    }
+  }, [isOpen, developerId, loadDeveloperStats]);
 
   const formatTokens = (amount: number): string => {
     if (amount >= 1000000) {

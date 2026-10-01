@@ -16,6 +16,8 @@ export const COMPACT_MAX_WIDTH = 768;
 export function isInWallet(): boolean {
   if (typeof navigator === 'undefined') return false;
   if (/\bbWallet\//.test(navigator.userAgent)) return true;
+  // bWallet injects a BRC-100 wallet as window.CWI before page scripts run.
+  if (typeof window !== 'undefined' && (window as unknown as { CWI?: unknown }).CWI) return true;
   // Allow forcing in-wallet mode for testing: ?inwallet=1
   try {
     return new URLSearchParams(window.location.search).get('inwallet') === '1';

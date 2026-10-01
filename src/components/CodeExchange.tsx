@@ -40,26 +40,6 @@ interface CodeListing {
   trending?: boolean;
 }
 
-interface DeveloperListing {
-  rank: number;
-  name: string;
-  handle: string;
-  twitter?: string;
-  authorType: 'human' | 'ai';
-  joinDate: string;
-  totalProjects: number;
-  totalUsers: number;
-  totalRevenue: number;
-  avgRating: number;
-  sharesAvailable: number;
-  totalShares: number;
-  currentPrice: number;
-  priceChange24h: number;
-  marketCap: number;
-  verified: boolean;
-  trending?: boolean;
-}
-
 interface CodeNFT {
   id: string;
   name: string;
@@ -101,7 +81,6 @@ interface CodeExchangeProps {
 const CodeExchange: React.FC<CodeExchangeProps> = ({ isOpen = true, onClose = () => {}, onSelectCode }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType] = useState<'all' | 'app' | 'contract' | 'library' | 'snippet'>('all');
-  const [sortBy] = useState<'price' | 'volume' | 'rating' | 'recent'>('price');
   const [activeTab, setActiveTab] = useState<'marketplace' | 'portfolio' | 'mint'>('marketplace');
   const [selectedNFT, setSelectedNFT] = useState<CodeNFT | null>(null);
 

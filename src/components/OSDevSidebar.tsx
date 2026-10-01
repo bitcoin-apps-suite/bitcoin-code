@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { 
+import {
   ChevronLeft,
   ChevronRight,
   Monitor,
@@ -10,7 +10,6 @@ import {
   Coins,
   Github,
   GitPullRequest,
-  ExternalLink,
   BookOpen,
   History,
   CheckCircle,
@@ -21,9 +20,7 @@ import {
   Download,
   Upload,
   Lock,
-  Unlock,
-  Activity,
-  Clock
+  Activity
 } from 'lucide-react'
 import './OSDevSidebar.css'
 
@@ -51,11 +48,6 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
     // Notify parent component of state change
     onToggle?.(isCollapsed)
   }, [isCollapsed, onToggle])
-
-  // Initial notification to parent component
-  useEffect(() => {
-    onToggle?.(isCollapsed)
-  }, [onToggle])
 
   // Fetch GitHub issues count
   useEffect(() => {

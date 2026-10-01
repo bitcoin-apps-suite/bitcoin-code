@@ -188,9 +188,11 @@ export class AIService {
           'Content-Type': 'application/json',
           'x-api-key': apiKey,
           'anthropic-version': '2023-06-01',
+          // Required for direct calls from the browser with the user's own key.
+          'anthropic-dangerous-direct-browser-access': 'true',
         },
         body: JSON.stringify({
-          model: 'claude-3-opus-20240229',
+          model: 'claude-opus-5-5',
           max_tokens: 2048,
           messages,
         }),
@@ -201,13 +203,13 @@ export class AIService {
       }
 
       const data = await response.json();
-      const content = data.content[0].text;
+      const content = (data.content || []).filter((b: { type: string }) => b.type === 'text').map((b: { text: string }) => b.text).join('');
 
       const utxoHash = await this.createInteractionHash(prompt, content, 'claude');
 
       return {
         content,
-        model: 'claude-3-opus',
+        model: 'claude-opus-5-5',
         utxoHash,
       };
     } catch (error) {
