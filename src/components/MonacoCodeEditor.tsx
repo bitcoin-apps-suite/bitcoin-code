@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-/* eslint-disable no-template-curly-in-string -- Monaco snippet placeholders use ${n:name} syntax */
 import Editor, { OnMount, BeforeMount } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 
@@ -74,6 +73,7 @@ const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             kind: monaco.languages.CompletionItemKind.Snippet,
             insertText: [
               'const transaction = {',
+              /* eslint-disable no-template-curly-in-string -- Monaco snippet placeholders (${n:name}) are literal text, not template expressions */
               '  to: "${1:recipient}",',
               '  amount: ${2:0.001},',
               '  data: "${3:metadata}",',
@@ -106,6 +106,7 @@ const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
               '  script: `${1:// Your Bitcoin script here}`,',
               '  inputs: [${2:inputs}],',
               '  outputs: [${3:outputs}]',
+              /* eslint-enable no-template-curly-in-string */
               '});'
             ].join('\n'),
             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './ContractsPage.css';
 import { HandCashService } from '../services/HandCashService';
 import Footer from '../components/Footer';
@@ -50,43 +50,12 @@ const ContractsPage: React.FC = () => {
     estimatedDays: 7
   });
 
-  useEffect(() => {
-    fetchContracts();
-    checkAuthentication();
-    
-    // Listen for storage changes to detect sidebar collapse state
-    const handleStorageChange = () => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    };
-    
-    // Handle window resize
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('resize', handleResize);
-    
-    // Check for sidebar state changes via polling
-    const checkSidebarState = setInterval(() => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    }, 100);
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('resize', handleResize);
-      clearInterval(checkSidebarState);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only setup
-  }, []);
 
-  const checkAuthentication = () => {
+  const checkAuthentication = useCallback(() => {
     setIsAuthenticated(handcashService.isAuthenticated());
-  };
+  }, [handcashService]);
 
-  const fetchContracts = async () => {
+  const fetchContracts = useCallback(async () => {
     try {
       // Fetch GitHub issues from bitcoin-code repository
       const response = await fetch('https://api.github.com/repos/bitcoin-apps-suite/bitcoin-code/issues?state=all&per_page=100');
@@ -276,7 +245,38 @@ const ContractsPage: React.FC = () => {
       ]);
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchContracts();
+    checkAuthentication();
+    
+    // Listen for storage changes to detect sidebar collapse state
+    const handleStorageChange = () => {
+      const saved = localStorage.getItem('devSidebarCollapsed');
+      setDevSidebarCollapsed(saved === 'true');
+    };
+    
+    // Handle window resize
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('resize', handleResize);
+    
+    // Check for sidebar state changes via polling
+    const checkSidebarState = setInterval(() => {
+      const saved = localStorage.getItem('devSidebarCollapsed');
+      setDevSidebarCollapsed(saved === 'true');
+    }, 100);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('resize', handleResize);
+      clearInterval(checkSidebarState);
+    };
+  }, [fetchContracts, checkAuthentication]);
 
   const handleClaimContract = async () => {
     if (!selectedContract || !claimForm.githubUsername || !claimForm.handcashHandle) {
