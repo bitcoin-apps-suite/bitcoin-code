@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { connectWallet } from '../lib/bwallet';
 
 interface MenuItem {
   label?: string;
@@ -52,7 +53,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
         { divider: true },
         { label: 'Preferences...', shortcut: '⌘,', action: () => console.log('Preferences') },
         { divider: true },
-        { label: isAuthenticated ? 'Sign Out' : 'Sign In', shortcut: '⌘Q', action: isAuthenticated ? onLogout : () => console.log('Sign in') }
+        { label: isAuthenticated ? 'Sign Out' : 'Sign In', shortcut: '⌘Q', action: isAuthenticated ? onLogout : () => { connectWallet().catch(() => alert('No BRC-100 wallet found. Open Bitcoin Code inside bWalletX, or run bWalletX on this computer.')); } }
       ]
     },
     {
@@ -97,7 +98,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
         { label: 'Chart.js', href: 'https://chartjs.org' },
         { divider: true },
         { label: 'BSV SDK', href: 'https://docs.bsvblockchain.org' },
-        { label: 'HandCash SDK', href: 'https://docs.handcash.io' }
+        { label: 'BRC-100 Wallet Interface', href: 'https://bsv.brc.dev/wallet/0100' }
       ]
     },
     {
@@ -690,7 +691,9 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({
         fontSize: '12px',
         color: 'rgba(255, 255, 255, 0.8)'
       }}>
-        <span>{isAuthenticated && currentUser ? (currentUser.handle || 'Connected') : 'Not Connected'}</span>
+        {isAuthenticated && currentUser ? <span>{currentUser.handle || 'Connected'}</span> : (
+          <button onClick={() => { connectWallet().catch(() => alert('No BRC-100 wallet found. Open Bitcoin Code inside bWalletX, or run bWalletX on this computer.')); }} style={{ background: '#F5B800', color: '#1a1300', border: 0, borderRadius: 4, padding: '2px 8px', fontWeight: 700, cursor: 'pointer', fontSize: 12 }}>Sign in with bWalletX</button>
+        )}
         <span style={{ color: isAuthenticated ? '#00ff88' : '#ff4444' }}>●</span>
       </div>
     </div>

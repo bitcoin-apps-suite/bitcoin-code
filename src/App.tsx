@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import CodeEditor from './components/CodeEditor';
-import CodeExchange from './components/CodeExchange';
 import TokenPage from './pages/TokenPage';
 import ContractsPage from './pages/ContractsPage';
 import BitcoinGitPage from './pages/BitcoinGitPage';
@@ -10,7 +9,6 @@ import CreateOfferPage from './pages/developers/CreateOfferPage';
 import GuidesPage from './pages/developers/GuidesPage';
 import TemplatesPage from './pages/developers/TemplatesPage';
 import CommissionPage from './pages/maintainers/CommissionPage';
-import FindDevelopersPage from './pages/maintainers/FindDevelopersPage';
 import ContributorsPage from './pages/contributors/ContributorsPage';
 import ProofOfConceptBar from './components/ProofOfConceptBar';
 import CleanTaskbar from './components/CleanTaskbar';
@@ -20,8 +18,11 @@ import MinimalDock from './components/MinimalDock';
 import ContractWizard from './components/ContractWizard';
 import TokenDashboard from './components/TokenDashboard';
 import { Code2, Package, Zap, Globe, Shield, Rocket } from 'lucide-react';
+import EmptyState from './components/EmptyState';
+import { useWallet } from './lib/bwallet';
 
 function App() {
+  const { user, disconnect } = useWallet();
   const [showBuilder, setShowBuilder] = useState(true);
   const [isDevSidebarCollapsed, setIsDevSidebarCollapsed] = useState(true);
   const [showContractWizard, setShowContractWizard] = useState(false);
@@ -112,7 +113,7 @@ function App() {
 {`// Build with Bitcoin Code
 const app = new BitcoinCode({
   network: 'mainnet',
-  wallet: 'handcash'
+  wallet: 'bwalletx' // any BRC-100 wallet
 });
 
 app.createTransaction({
@@ -171,7 +172,7 @@ app.createTransaction({
             <LibraryCard name="Vue.js" version="3.3.4" description="Progressive Framework" />
             <LibraryCard name="Three.js" version="0.155.0" description="3D Graphics" />
             <LibraryCard name="BSV SDK" version="1.7.6" description="Blockchain Integration" />
-            <LibraryCard name="HandCash" version="0.0.4" description="Wallet Connect" />
+            <LibraryCard name="BRC-100" version="@bsv/sdk" description="Wallet interface (bWalletX)" />
             <LibraryCard name="Chart.js" version="4.3.0" description="Data Visualization" />
           </div>
           <div className="library-cta">
@@ -271,9 +272,9 @@ app.createTransaction({
     <div className="App">
       <ProofOfConceptBar />
       <CleanTaskbar 
-        isAuthenticated={false}
-        currentUser={null}
-        onLogout={() => console.log('Logout')}
+        isAuthenticated={!!user}
+        currentUser={user ? { handle: user.name } : null}
+        onLogout={disconnect}
         onNewProject={() => console.log('New project')}
         onSaveProject={() => console.log('Save project')}
         onOpenLibraryModal={() => console.log('Open library modal')}
@@ -290,7 +291,7 @@ app.createTransaction({
           {showBuilder ? (
             <Routes>
               <Route path="/" element={<CodeEditor />} />
-              <Route path="/exchange" element={<CodeExchange />} />
+              <Route path="/exchange" element={<EmptyState title="Code Exchange">Not live yet. Nothing is listed here until real offers exist on-chain.</EmptyState>} />
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
               <Route path="/bitcoin-git" element={<BitcoinGitPage />} />
@@ -298,13 +299,13 @@ app.createTransaction({
               <Route path="/developers/guides" element={<GuidesPage />} />
               <Route path="/developers/templates" element={<TemplatesPage />} />
               <Route path="/maintainers/commission" element={<CommissionPage />} />
-              <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
+              <Route path="/maintainers/find-developers" element={<EmptyState title="Find developers">Not live yet. No developer listings exist yet.</EmptyState>} />
               <Route path="/contributors" element={<ContributorsPage />} />
             </Routes>
           ) : (
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/exchange" element={<CodeExchange />} />
+              <Route path="/exchange" element={<EmptyState title="Code Exchange">Not live yet. Nothing is listed here until real offers exist on-chain.</EmptyState>} />
               <Route path="/token" element={<TokenPage />} />
               <Route path="/contracts" element={<ContractsPage />} />
               <Route path="/bitcoin-git" element={<BitcoinGitPage />} />
@@ -312,7 +313,7 @@ app.createTransaction({
               <Route path="/developers/guides" element={<GuidesPage />} />
               <Route path="/developers/templates" element={<TemplatesPage />} />
               <Route path="/maintainers/commission" element={<CommissionPage />} />
-              <Route path="/maintainers/find-developers" element={<FindDevelopersPage />} />
+              <Route path="/maintainers/find-developers" element={<EmptyState title="Find developers">Not live yet. No developer listings exist yet.</EmptyState>} />
               <Route path="/contributors" element={<ContributorsPage />} />
             </Routes>
           )}
