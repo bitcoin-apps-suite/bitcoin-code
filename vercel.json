@@ -1,5 +1,5 @@
 {
-  "buildCommand": "CI=false pnpm build",
+  "buildCommand": "pnpm build",
   "headers": [
     {
       "source": "/(.*)",

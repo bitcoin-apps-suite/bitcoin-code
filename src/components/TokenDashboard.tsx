@@ -43,6 +43,7 @@ const TokenDashboard: React.FC<TokenDashboardProps> = ({ developerId, isOpen, on
     if (isOpen && developerId) {
       loadDeveloperStats();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- reload only when the panel opens or developer changes
   }, [isOpen, developerId]);
 
   const loadDeveloperStats = async () => {

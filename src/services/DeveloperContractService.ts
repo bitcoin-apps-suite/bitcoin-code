@@ -326,9 +326,6 @@ export class DeveloperContractService {
       // Verify the contract exists on blockchain
       const blockchainData = await this.bsvService.retrieveData(contract.blockchain.timestampTx);
       
-      // Verify contract hash matches
-      const currentHash = await this.bsvService.createHash(JSON.stringify(contract));
-      
       return blockchainData.contractHash === contract.blockchain.contractHash;
     } catch (error) {
       console.error('Contract verification failed:', error);

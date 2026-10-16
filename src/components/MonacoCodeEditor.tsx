@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
+/* eslint-disable no-template-curly-in-string -- Monaco snippet placeholders use ${n:name} syntax */
 import Editor, { OnMount, BeforeMount } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 
