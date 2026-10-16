@@ -12,15 +12,14 @@ import {
   Plus,
   Save,
   Copy,
-  Play,
   Bug,
-  Package,
   Code2,
   Bot,
   Coins
 } from 'lucide-react';
 import AIChatSidebar from './AIChatSidebar';
 import MonacoCodeEditor from './MonacoCodeEditor';
+import { useWallet, publishRecord } from '../lib/bwallet';
 import './CodeEditor.css';
 import './AIChatSidebar.css';
 
@@ -44,6 +43,24 @@ export interface Tab {
 
 const CodeEditor: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('welcome');
+  const { user, connect } = useWallet();
+  const [publishing, setPublishing] = useState(false);
+  const [publishMsg, setPublishMsg] = useState('');
+
+  // Publish the open file on-chain as B:// data. The wallet shows the fee before you approve.
+  const publishTab = async (tab: Tab) => {
+    if (!user) { await connect(); return; }
+    setPublishing(true);
+    setPublishMsg('');
+    try {
+      const r = await publishRecord(['19HxigV5QyBv3tHpQVcUS4GnAXxQ8ZLxXX', tab.content, 'text/plain; charset=utf-8', 'utf-8', tab.name], 'Publish code to Bitcoin');
+      setPublishMsg(r.txid ? `Published ${tab.name}: ${r.txid}` : 'Published.');
+    } catch (e) {
+      setPublishMsg(e instanceof Error ? e.message : 'The wallet did not sign.');
+    } finally {
+      setPublishing(false);
+    }
+  };
   const [tabs, setTabs] = useState<Tab[]>([
     {
       id: 'welcome',
@@ -434,21 +451,17 @@ MIT`,
         {activeTabContent && (
           <div className="editor-content">
             <div className="editor-toolbar">
-              <button className="toolbar-btn" title="Save">
+              <button className="toolbar-btn" title={user ? 'Publish this file on-chain' : 'Sign in with bWalletX to publish on-chain'} disabled={publishing} onClick={() => void publishTab(activeTabContent)}>
                 <Save size={16} />
               </button>
-              <button className="toolbar-btn" title="Copy">
+              <button className="toolbar-btn" title="Copy" onClick={() => void navigator.clipboard?.writeText(activeTabContent.content)}>
                 <Copy size={16} />
               </button>
-              <button className="toolbar-btn" title="Run">
-                <Play size={16} />
-              </button>
-              <button className="toolbar-btn" title="Debug">
-                <Bug size={16} />
-              </button>
-              <button className="toolbar-btn" title="Build">
-                <Package size={16} />
-              </button>
+              {(publishing || publishMsg) && (
+                <span style={{ fontSize: 12, color: '#bbb', marginLeft: 8, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 420 }}>
+                  {publishing ? 'Waiting for wallet…' : publishMsg}
+                </span>
+              )}
               <button 
                 className={`toolbar-btn ${showTerminal ? 'active' : ''}`}
                 onClick={() => setShowTerminal(!showTerminal)}
@@ -478,21 +491,7 @@ MIT`,
                   </div>
                   <div className="terminal-content">
                     <div className="terminal-line">
-                      <span className="terminal-prompt">bitcoin-code $</span>
-                      <span className="terminal-output"> npm start</span>
-                    </div>
-                    <div className="terminal-line">
-                      <span className="terminal-output">Starting Bitcoin development server...</span>
-                    </div>
-                    <div className="terminal-line">
-                      <span className="terminal-success">✓ Server running on http://localhost:3010</span>
-                    </div>
-                    <div className="terminal-line">
-                      <span className="terminal-success">✓ Bitcoin network connected</span>
-                    </div>
-                    <div className="terminal-line">
-                      <span className="terminal-prompt">bitcoin-code $</span>
-                      <input className="terminal-input" type="text" />
+                      <span className="terminal-output">The terminal is not live yet.</span>
                     </div>
                   </div>
                 </div>
