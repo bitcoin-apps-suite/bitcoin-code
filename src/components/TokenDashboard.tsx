@@ -5,7 +5,7 @@
  * Integrates with DeveloperContractService and TokenAllocationManager
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './TokenDashboard.css';
 import { developerContractService } from '../services/DeveloperContractService';
 import { tokenAllocationManager } from '../services/TokenAllocationManager';
@@ -30,23 +30,18 @@ interface DeveloperStats {
   monthlyEarnings: { month: string; tokens: number; usd: number }[];
 }
 
+// Mock BCODE token price - in production this would come from an API
+const BCODE_PRICE_USD = 0.0034;
+
 const TokenDashboard: React.FC<TokenDashboardProps> = ({ developerId, isOpen, onClose }) => {
   const [stats, setStats] = useState<DeveloperStats | null>(null);
   const [selectedTimeframe, setSelectedTimeframe] = useState<'1M' | '3M' | '6M' | '1Y' | 'ALL'>('3M');
   const [activeTab, setActiveTab] = useState<'overview' | 'allocations' | 'contracts' | 'analytics'>('overview');
   const [loading, setLoading] = useState(true);
 
-  // Mock BCODE token price - in production this would come from an API
-  const BCODE_PRICE_USD = 0.0034;
 
-  useEffect(() => {
-    if (isOpen && developerId) {
-      loadDeveloperStats();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- reload only when the panel opens or developer changes
-  }, [isOpen, developerId]);
 
-  const loadDeveloperStats = async () => {
+  const loadDeveloperStats = useCallback(async () => {
     setLoading(true);
     try {
       // Get performance data
@@ -90,7 +85,13 @@ const TokenDashboard: React.FC<TokenDashboardProps> = ({ developerId, isOpen, on
     } finally {
       setLoading(false);
     }
-  };
+  }, [developerId]);
+
+  useEffect(() => {
+    if (isOpen && developerId) {
+      loadDeveloperStats();
+    }
+  }, [isOpen, developerId, loadDeveloperStats]);
 
   const formatTokens = (amount: number): string => {
     if (amount >= 1000000) {

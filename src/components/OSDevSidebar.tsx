@@ -28,12 +28,6 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
     onToggle?.(isCollapsed)
   }, [isCollapsed, onToggle])
 
-  // Initial notification to parent component
-  useEffect(() => {
-    onToggle?.(isCollapsed)
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- initial notification only; later changes handled by the effect above
-  }, [onToggle])
-
   // Fetch GitHub issues count
   useEffect(() => {
     const fetchIssues = async () => {
