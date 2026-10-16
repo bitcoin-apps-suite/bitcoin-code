@@ -35,7 +35,7 @@ const ContractsPage: React.FC = () => {
   const [selectedContract, setSelectedContract] = useState<Contract | null>(null);
   const [showClaimModal, setShowClaimModal] = useState(false);
   const [handcashService] = useState(new HandCashService());
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState<'developer' | 'code'>('developer');
   const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(() => {
     const saved = localStorage.getItem('devSidebarCollapsed');
@@ -79,6 +79,7 @@ const ContractsPage: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       clearInterval(checkSidebarState);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only setup
   }, []);
 
   const checkAuthentication = () => {
@@ -120,7 +121,6 @@ const ContractsPage: React.FC = () => {
         let priorityMatch = body.match(/\*\*Priority:\*\*\s*(Critical|High|Medium|Low)/i);
         let hoursMatch = body.match(/\*\*Estimated Hours:\*\*\s*([\d,]+)/i);
         let rewardMatch = body.match(/\*\*Token Reward:\*\*\s*([\d,]+)\s*BCODE/i);
-        let categoryMatch = body.match(/\*\*Category:\*\*\s*([^\n]+)/i);
         
         // Find matching PR if exists
         const matchingPR = pullRequests.find((pr: any) => 

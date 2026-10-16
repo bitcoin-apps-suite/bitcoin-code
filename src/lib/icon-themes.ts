@@ -1,76 +1,11 @@
 // Lucide Icons (existing)
-import { 
-  Wallet, 
-  Mail, 
-  Music, 
-  FileText, 
-  HardDrive, 
-  Globe, 
-  Terminal, 
-  Settings, 
-  Calendar, 
-  Search, 
-  LineChart, 
-  Briefcase, 
-  Table, 
-  Share2,
-  DollarSign,
-  Store,
-  Code2,
-  TrendingUp,
-  Video,
-  Camera,
-  MapPin,
-  MessageCircle,
-  Users,
-  Gamepad2,
-  BookOpen,
-  Box,
-  Palette,
-  GraduationCap,
-  UserCheck,
-  Sparkles,
-  Circle,
-  Monitor
-} from 'lucide-react'
+import { Wallet, Mail, Music, FileText, HardDrive, Globe, Calendar, Search, Briefcase, Table, Store, Code2, TrendingUp, Video, Camera, MapPin, MessageCircle, Users, Gamepad2, BookOpen, Box, Palette, GraduationCap, UserCheck, Sparkles, Circle, Monitor } from 'lucide-react'
 
 // React Icons (Material Design)
-import { 
-  MdAccountBalanceWallet,
-  MdEmail,
-  MdLibraryMusic,
-  MdDescription,
-  MdStorage,
-  MdLanguage,
-  MdTerminal,
-  MdSettings,
-  MdCalendarToday,
-  MdSearch,
-  MdTrendingUp,
-  MdWork,
-  MdTableChart,
-  MdShare,
-  MdAttachMoney,
-  MdStore,
-  MdCode,
-  MdShowChart,
-  MdVideoLibrary,
-  MdPhotoCamera,
-  MdLocationOn,
-  MdChat,
-  MdGroup,
-  MdSportsEsports,
-  MdMenuBook,
-  MdViewInAr,
-  MdPalette,
-  MdSchool,
-  MdVerifiedUser,
-  MdCircle,
-  MdMonitor
-} from 'react-icons/md'
+import { MdAccountBalanceWallet, MdEmail, MdLibraryMusic, MdDescription, MdStorage, MdLanguage, MdCalendarToday, MdSearch, MdTrendingUp, MdWork, MdTableChart, MdStore, MdCode, MdShowChart, MdVideoLibrary, MdPhotoCamera, MdLocationOn, MdChat, MdGroup, MdSportsEsports, MdMenuBook, MdViewInAr, MdPalette, MdSchool, MdVerifiedUser, MdCircle, MdMonitor } from 'react-icons/md'
 
 // Import the complete mappings
-import { getCompleteThemedIcon, completeIconMappings } from './icon-mappings-complete'
+import { getCompleteThemedIcon } from './icon-mappings-complete'
 
 export interface IconMapping {
   lucide: any

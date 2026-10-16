@@ -1,30 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { 
-  ChevronLeft,
-  ChevronRight,
-  Monitor,
-  FileCode,
-  Users,
-  FileText,
-  Coins,
-  Github,
-  GitPullRequest,
-  ExternalLink,
-  BookOpen,
-  History,
-  CheckCircle,
-  ListTodo,
-  Briefcase,
-  Terminal,
-  Package,
-  Download,
-  Upload,
-  Lock,
-  Unlock,
-  Activity,
-  Clock
-} from 'lucide-react'
+import { ChevronLeft, ChevronRight, Monitor, FileCode, Users, FileText, Coins, Github, GitPullRequest, BookOpen, History, CheckCircle, ListTodo, Briefcase, Terminal, Package, Download, Upload, Lock, Activity } from 'lucide-react'
 import './OSDevSidebar.css'
 
 interface DevSidebarProps {
@@ -55,6 +31,7 @@ export default function DevSidebar({ onToggle }: DevSidebarProps) {
   // Initial notification to parent component
   useEffect(() => {
     onToggle?.(isCollapsed)
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- initial notification only; later changes handled by the effect above
   }, [onToggle])
 
   // Fetch GitHub issues count

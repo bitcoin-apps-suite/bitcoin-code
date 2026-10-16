@@ -12,7 +12,7 @@
  * - Integration with contracting system
  */
 
-import { DeveloperContract, TokenAllocationEvent, developerContractService } from './DeveloperContractService';
+import { TokenAllocationEvent } from './DeveloperContractService';
 import { BSVStorageService } from './BSVStorageService';
 
 export interface TokenPool {
@@ -664,7 +664,7 @@ export class TokenAllocationManager {
   async getDeveloperAllocations(developerId: string): Promise<TokenAllocationEvent[]> {
     // In production, this would query the blockchain/database
     // For now, we'll return mock data based on the developer's performance
-    const performance = this.getDeveloperPerformance(developerId);
+    this.getDeveloperPerformance(developerId);
     
     // Generate mock allocation history
     const allocations: TokenAllocationEvent[] = [

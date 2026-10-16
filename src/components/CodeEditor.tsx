@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   FileText, 
   FolderOpen, 
@@ -88,16 +88,15 @@ function main() {
     }
   ]);
   
-  const [sidebarWidth, setSidebarWidth] = useState(280);
+  const [sidebarWidth] = useState(280);
   const [aiChatWidth, setAiChatWidth] = useState(400);
-  const [terminalHeight, setTerminalHeight] = useState(300);
+  const [terminalHeight] = useState(300);
   const [showTerminal, setShowTerminal] = useState(true);
   const [showAiChat, setShowAiChat] = useState(true);
   const [activePanel, setActivePanel] = useState<'explorer' | 'search' | 'git' | 'debug'>('explorer');
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['src', 'components']));
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [cursorPosition] = useState({ line: 1, column: 1 });
-  const [isResizing, setIsResizing] = useState<'sidebar' | 'terminal' | 'aichat' | null>(null);
 
   // Sample file structure
   const fileTree: FileNode = {
